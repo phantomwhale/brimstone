@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  health: 1
+  sanity: 1
+  agility: 1
+  cunning: 1
+  spirit: 1
+  strength: 1
+  lore: 1
+  luck: 1
+  initiative: 1
+  range: 1
+  melee: 1
+  combat: 1
+  max_grit: 1
+
+two:
+  name: MyString
+  health: 1
+  sanity: 1
+  agility: 1
+  cunning: 1
+  spirit: 1
+  strength: 1
+  lore: 1
+  luck: 1
+  initiative: 1
+  range: 1
+  melee: 1
+  combat: 1
+  max_grit: 1
