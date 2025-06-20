@@ -1,0 +1,584 @@
+assassin:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+bandido:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+cavalry_soldier:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+cowboy:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+dark_stone_shaman:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+drifter:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+frontier_doc:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+gambler:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+geisha:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+gunslinger:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+indianscout:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+jargono_native:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+lawman:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+martial_artist:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+ninja:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+nun:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+orphan:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+outlaw:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+preacher:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+prospector:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+rancher:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+saloon_girl:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+samurai_warrior:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+soldier:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+spanish_conquistador:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+templar:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+travelling_monk:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+tribal_shaman:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+tribal_warrior:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+us_marshal:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+wandering_samurai:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+witch_hunter:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+samurai_warrior:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+soldier:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+travelling_monk:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+tribal_shaman:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+tribal_warrior:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+us_marshal:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
+
+wandering_samurai:
+  health: 10
+  sanity: 10
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range: 4
+  melee: 4
+  combat: 2
+  max_grit: 2
