@@ -1,5 +1,5 @@
 class HerosController < ApplicationController
-  before_action :set_hero, only: %i[ show edit update destroy ]
+  before_action :set_hero, only: %i[show edit update destroy]
 
   # GET /heros or /heros.json
   def index
@@ -8,7 +8,6 @@ class HerosController < ApplicationController
 
   # GET /heros/1 or /heros/1.json
   def show
-    debugger
   end
 
   # GET /heros/new
@@ -59,13 +58,15 @@ class HerosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_hero
-      @hero = Hero.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def hero_params
-      params.require(:hero).permit(:name, :health, :sanity, :agility, :cunning, :spirit, :strength, :lore, :luck, :initiative, :range, :melee, :combat, :max_grit)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_hero
+    @hero = Hero.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def hero_params
+    params.require(:hero).permit(:name, :health, :sanity, :agility, :cunning, :spirit, :strength, :lore, :luck, :initiative, :range, :melee, :combat,
+      :max_grit)
+  end
 end
