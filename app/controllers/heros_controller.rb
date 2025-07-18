@@ -22,6 +22,16 @@ class HerosController < ApplicationController
   # POST /heros or /heros.json
   def create
     @hero = Hero.new(hero_params)
+    
+    # Copy stats from hero class if hero_class is provided
+    if @hero.hero_class.present?
+      class_attributes = HeroClasses.attributes_for(@hero.hero_class)
+      if class_attributes
+        class_attributes.each do |attribute, value|
+          @hero.send("#{attribute}=", value) if @hero.respond_to?("#{attribute}=")
+        end
+      end
+    end
 
     respond_to do |format|
       if @hero.save
@@ -66,7 +76,7 @@ class HerosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def hero_params
-    params.require(:hero).permit(:name, :health, :sanity, :agility, :cunning, :spirit, :strength, :lore, :luck, :initiative, :range, :melee, :combat,
+    params.require(:hero).permit(:name, :hero_class, :health, :sanity, :agility, :cunning, :spirit, :strength, :lore, :luck, :initiative, :range, :melee, :combat,
       :max_grit)
   end
 end
