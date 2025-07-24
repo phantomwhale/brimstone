@@ -1,12 +1,12 @@
 require "test_helper"
 
-class HerosControllerTest < ActionDispatch::IntegrationTest
+class HeroesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @hero = heros(:one)
+    @hero = heroes(:one)
   end
 
   test "should get index" do
-    get heros_url
+    get heroes_url
     assert_response :success
   end
 
@@ -17,7 +17,7 @@ class HerosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create hero" do
     assert_difference("Hero.count") do
-      post heros_url, params: { hero: { agility: @hero.agility, combat: @hero.combat, cunning: @hero.cunning, health: @hero.health, initiative: @hero.initiative, lore: @hero.lore, luck: @hero.luck, max_grit: @hero.max_grit, melee: @hero.melee, name: @hero.name, range: @hero.range, sanity: @hero.sanity, spirit: @hero.spirit, strength: @hero.strength } }
+      post heroes_url, params: { hero: { agility: @hero.agility, combat: @hero.combat, cunning: @hero.cunning, health: @hero.health, initiative: @hero.initiative, lore: @hero.lore, luck: @hero.luck, max_grit: @hero.max_grit, melee: @hero.melee, name: @hero.name, range: @hero.range, sanity: @hero.sanity, spirit: @hero.spirit, strength: @hero.strength } }
     end
 
     assert_redirected_to hero_url(Hero.last)
@@ -43,6 +43,6 @@ class HerosControllerTest < ActionDispatch::IntegrationTest
       delete hero_url(@hero)
     end
 
-    assert_redirected_to heros_url
+    assert_redirected_to heroes_url
   end
 end

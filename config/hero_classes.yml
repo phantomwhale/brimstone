@@ -1,6 +1,8 @@
 assassin:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -8,14 +10,19 @@ assassin:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 bandido:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -23,14 +30,19 @@ bandido:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 cavalry_soldier:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -38,14 +50,19 @@ cavalry_soldier:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 cowboy:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -53,14 +70,19 @@ cowboy:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 dark_stone_shaman:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -68,14 +90,19 @@ dark_stone_shaman:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 drifter:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -83,14 +110,19 @@ drifter:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 frontier_doc:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -98,14 +130,19 @@ frontier_doc:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 gambler:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -113,14 +150,19 @@ gambler:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 geisha:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -128,14 +170,19 @@ geisha:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 gunslinger:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -143,14 +190,19 @@ gunslinger:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 indianscout:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -158,14 +210,19 @@ indianscout:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 jargono_native:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -173,14 +230,19 @@ jargono_native:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 lawman:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -188,14 +250,19 @@ lawman:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 martial_artist:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -203,14 +270,19 @@ martial_artist:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 ninja:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -218,14 +290,19 @@ ninja:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 nun:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -233,14 +310,19 @@ nun:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 orphan:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -248,14 +330,19 @@ orphan:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 outlaw:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -263,14 +350,19 @@ outlaw:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 preacher:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -278,14 +370,19 @@ preacher:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 prospector:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -293,14 +390,19 @@ prospector:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 rancher:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -308,14 +410,19 @@ rancher:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 saloon_girl:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -323,14 +430,19 @@ saloon_girl:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 samurai_warrior:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -338,14 +450,19 @@ samurai_warrior:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
 
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
 soldier:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -353,14 +470,19 @@ soldier:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 spanish_conquistador:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -368,14 +490,19 @@ spanish_conquistador:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 templar:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -383,14 +510,19 @@ templar:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 travelling_monk:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -398,14 +530,19 @@ travelling_monk:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 tribal_shaman:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -413,14 +550,19 @@ tribal_shaman:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 tribal_warrior:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -428,14 +570,19 @@ tribal_warrior:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 us_marshal:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -443,14 +590,19 @@ us_marshal:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
 
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
 wandering_samurai:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -458,14 +610,19 @@ wandering_samurai:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
 witch_hunter:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -473,14 +630,19 @@ witch_hunter:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
-samurai_warrior:
+# Forbidden Fortress Heroes
+sorceress:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -488,14 +650,18 @@ samurai_warrior:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
-soldier:
+sorcerer:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -503,14 +669,19 @@ soldier:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
-travelling_monk:
+# Gates of Valhalla Heroes
+viking_berserker:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -518,14 +689,18 @@ travelling_monk:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
-tribal_shaman:
+viking_huscarl:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -533,14 +708,18 @@ tribal_shaman:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
-tribal_warrior:
+viking_jarl:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -548,14 +727,18 @@ tribal_warrior:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
-us_marshal:
+viking_raider:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -563,14 +746,19 @@ us_marshal:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
 
-wandering_samurai:
+# Valley of Serpent Kings Heroes
+conquistador_duelist:
   health: 10
+  defense: 4
   sanity: 10
+  willpower: 4
   agility: 2
   cunning: 2
   spirit: 2
@@ -578,7 +766,333 @@ wandering_samurai:
   lore: 2
   luck: 2
   initiative: 3
-  range: 4
-  melee: 4
+  range_to_hit: 3
+  melee_to_hit: 4
   combat: 2
   max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+conquistador_el_capitan:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+conquistador_explorer:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+conquistador_soldier:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+# Special/Kickstarter Heroes
+blood_priestess:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+jaguar_warrior:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+norse_dwarf:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+ulfsark_skinwalker:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+daimyo:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+sumo:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+trederran_veteran:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+cursed_eternal:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+valkyrie_shield_maiden:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+valkyrie_avenger:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+trederran_engineer:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+trederran_legionnaire:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+trederran_sergeant:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5
+
+trederran_specialist:
+  health: 10
+  defense: 4
+  sanity: 10
+  willpower: 4
+  agility: 2
+  cunning: 2
+  spirit: 2
+  strength: 2
+  lore: 2
+  luck: 2
+  initiative: 3
+  range_to_hit: 3
+  melee_to_hit: 4
+  combat: 2
+  max_grit: 2
+  corrupt_resist: 5
+  side_bag_tokens: 5

@@ -1,17 +1,17 @@
 require "application_system_test_case"
 
-class HerosTest < ApplicationSystemTestCase
+class HeroesTest < ApplicationSystemTestCase
   setup do
-    @hero = heros(:one)
+    @hero = heroes(:one)
   end
 
   test "visiting the index" do
-    visit heros_url
-    assert_selector "h1", text: "Heros"
+    visit heroes_url
+    assert_selector "h1", text: "Heroes"
   end
 
   test "should create hero" do
-    visit heros_url
+    visit heroes_url
     click_on "New hero"
 
     fill_in "Agility", with: @hero.agility

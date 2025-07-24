@@ -3,7 +3,7 @@
 ## Commands
 - **Start dev server**: `bin/rails server` (or `bin/rails s`)
 - **Run tests**: `bin/rails test` (or `bin/rails t`)
-- **Run single test**: `bin/rails test test/controllers/heros_controller_test.rb`
+- **Run single test**: `bin/rails test test/controllers/heroes_controller_test.rb`
 - **Run system tests**: `bin/rails test:system`
 - **Database operations**: `bin/rails db:migrate`, `bin/rails db:seed`, `bin/rails db:reset`
 - **Generate code**: `bin/rails generate controller Heroes` or `bin/rails g model Hero`
@@ -15,7 +15,7 @@
 - **Frontend**: Tailwind CSS, Stimulus, Turbo, Importmaps
 - **Main resource**: Heroes with extensive attributes (health, sanity, agility, cunning, etc.)
 - **Hero classes**: YAML configuration system in config/hero_classes.yml with 30+ predefined character classes
-- **Key files**: app/models/hero.rb, app/controllers/heros_controller.rb, config/routes.rb
+- **Key files**: app/models/hero.rb, app/controllers/heroes_controller.rb, config/routes.rb
 
 ## Code Style
 - **Ruby**: Follow Rails conventions, snake_case for variables/methods, CamelCase for classes
@@ -24,3 +24,7 @@
 - **Testing**: Use Rails test framework with fixtures, parallelize tests, inherit from ActionDispatch::IntegrationTest
 - **File organization**: Standard Rails directory structure (app/models, app/controllers, app/views, test/)
 - **Configuration**: Use YAML files for data (hero_classes.yml), Rails initializers for app config
+
+## Shadows of Brimtsone
+- Shadows of Brimstone is a board game
+- This page https://github.com/akavel/awesome-shadows-of-brimstone has lots of links to various other pages with lots of information about the game
