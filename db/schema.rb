@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_18_141445) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_24_122705) do
   create_table "heros", force: :cascade do |t|
     t.string "name"
     t.integer "health"
@@ -22,12 +22,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_18_141445) do
     t.integer "lore"
     t.integer "luck"
     t.integer "initiative"
-    t.integer "range"
-    t.integer "melee"
+    t.integer "range_to_hit"
+    t.integer "melee_to_hit"
     t.integer "combat"
     t.integer "max_grit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "hero_class"
+    t.integer "defense"
+    t.integer "willpower"
+    t.integer "corrupt_resist"
+    t.integer "side_bag_tokens"
   end
 end
