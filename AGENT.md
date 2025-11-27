@@ -5,14 +5,19 @@
 - **Run tests**: `bin/rails test` (or `bin/rails t`)
 - **Run single test**: `bin/rails test test/controllers/heroes_controller_test.rb`
 - **Run system tests**: `bin/rails test:system`
-- **Database operations**: `bin/rails db:migrate`, `bin/rails db:seed`, `bin/rails db:reset`
+- **Database operations**: `bin/rails db:migrate`, `bin/rails db:seed`, `bin/rails db:prepare`
 - **Generate code**: `bin/rails generate controller Heroes` or `bin/rails g model Hero`
 - **Console**: `bin/rails console` (or `bin/rails c`)
+- **Background jobs**: `bin/jobs` (runs Solid Queue worker)
 
 ## Architecture
-- **Framework**: Ruby on Rails 7.2 application on Ruby 3.4.4
-- **Database**: SQLite3 (development.sqlite3, test.sqlite3, production.sqlite3)
-- **Frontend**: Tailwind CSS, Stimulus, Turbo, Importmaps
+- **Framework**: Ruby on Rails 8.0 on Ruby 3.4.4
+- **Database**: SQLite3 (stored in `storage/` directory)
+- **Asset Pipeline**: Propshaft (modern, zero-config asset serving)
+- **Frontend**: Tailwind CSS v4, Stimulus, Turbo, Importmaps
+- **Background Jobs**: Solid Queue (database-backed, no Redis needed)
+- **Caching**: Solid Cache (database-backed)
+- **WebSockets**: Solid Cable (database-backed Action Cable)
 - **Main resource**: Heroes with extensive attributes (health, sanity, agility, cunning, etc.)
 - **Hero classes**: YAML configuration system in config/hero_classes.yml with 55+ predefined character classes
 - **Key files**: app/models/hero.rb, app/controllers/heroes_controller.rb, config/routes.rb
@@ -25,7 +30,7 @@
 - **File organization**: Standard Rails directory structure (app/models, app/controllers, app/views, test/)
 - **Configuration**: Use YAML files for data (hero_classes.yml), Rails initializers for app config
 
-## Frontend Practices (Rails 7+ Modern Stack)
+## Frontend Practices (Rails 8 Modern Stack)
 
 ### Tailwind CSS v4
 - **Version**: Tailwind CSS v4.x (CSS-based configuration, not JS)
@@ -35,7 +40,6 @@
 - **Custom utilities**: Use `@utility` directive for custom utilities
 - **Component classes**: Write plain CSS classes (not `@layer components`)
 - **Build command**: `bundle exec tailwindcss --input app/assets/stylesheets/application.tailwind.css --output app/assets/builds/tailwind.css`
-- **Note**: `bin/rails tailwindcss:build` may not process custom CSS correctly; use direct command above
 
 ### Tailwind Theme (Western/Brimstone)
 Custom colors defined in `@theme { }` block in application.tailwind.css:
@@ -65,18 +69,46 @@ Custom fonts:
 - **Pin packages**: `bin/importmap pin <package-name>`
 - **Vendor JS**: Place in `vendor/javascript/`
 
+### Propshaft (Asset Pipeline)
+- **Replaces Sprockets**: Zero-config asset serving
+- **No compilation**: Assets served directly with digest fingerprinting
+- **CSS/JS**: Place in `app/assets/` directories
+- **Images**: Place in `app/assets/images/`
+
 ### View Best Practices
 - Use ERB with Tailwind classes for styling
 - Prefer inline Tailwind utilities over custom CSS classes
-- For complex repeated styles, define `@layer components` in application.tailwind.css
 - Use Rails form helpers (`form_with`, `form.label`, `form.text_field`, etc.)
 - Use partials for reusable view components
 - Keep views semantic with proper HTML5 elements
 
-### Asset Pipeline
-- Tailwind CSS compiled via tailwindcss-rails gem
-- Static assets in `app/assets/` (images, fonts)
-- Sprockets handles non-Tailwind CSS (`app/assets/stylesheets/application.css`)
+## Rails 8 Features
+
+### Solid Queue (Background Jobs)
+- Database-backed job queue (no Redis required)
+- Config: `config/queue.yml`
+- Run worker: `bin/jobs`
+- Monitor: `/jobs` (Mission Control dashboard)
+
+### Solid Cache
+- Database-backed cache store
+- Config: `config/cache.yml`
+- Enabled in production by default
+
+### Solid Cable (Action Cable)
+- Database-backed WebSocket connections
+- Config: `config/cable.yml`
+- No Redis required for development/production
+
+### Database Configuration
+- Primary database: `storage/<env>.sqlite3`
+- Cache database: `storage/<env>_cache.sqlite3`
+- Queue database: `storage/<env>_queue.sqlite3`
+- Cable database: `storage/<env>_cable.sqlite3`
+
+### Health Check
+- Endpoint: `/up`
+- Returns 200 if app is healthy
 
 ## Shadows of Brimstone
 - Shadows of Brimstone is a board game
