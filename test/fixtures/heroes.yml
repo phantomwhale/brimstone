@@ -11,8 +11,8 @@ one:
   lore: 1
   luck: 1
   initiative: 1
-  range: 1
-  melee: 1
+  range_to_hit: 1
+  melee_to_hit: 1
   combat: 1
   max_grit: 1
 
@@ -27,7 +27,7 @@ two:
   lore: 1
   luck: 1
   initiative: 1
-  range: 1
-  melee: 1
+  range_to_hit: 1
+  melee_to_hit: 1
   combat: 1
   max_grit: 1

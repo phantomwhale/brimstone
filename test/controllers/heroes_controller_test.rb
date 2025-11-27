@@ -17,7 +17,7 @@ class HeroesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create hero" do
     assert_difference("Hero.count") do
-      post heroes_url, params: { hero: { agility: @hero.agility, combat: @hero.combat, cunning: @hero.cunning, health: @hero.health, initiative: @hero.initiative, lore: @hero.lore, luck: @hero.luck, max_grit: @hero.max_grit, melee: @hero.melee, name: @hero.name, range: @hero.range, sanity: @hero.sanity, spirit: @hero.spirit, strength: @hero.strength } }
+      post heroes_url, params: { hero: { agility: @hero.agility, combat: @hero.combat, cunning: @hero.cunning, health: @hero.health, initiative: @hero.initiative, lore: @hero.lore, luck: @hero.luck, max_grit: @hero.max_grit, melee_to_hit: @hero.melee_to_hit, name: @hero.name, range_to_hit: @hero.range_to_hit, sanity: @hero.sanity, spirit: @hero.spirit, strength: @hero.strength } }
     end
 
     assert_redirected_to hero_url(Hero.last)
@@ -34,7 +34,7 @@ class HeroesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update hero" do
-    patch hero_url(@hero), params: { hero: { agility: @hero.agility, combat: @hero.combat, cunning: @hero.cunning, health: @hero.health, initiative: @hero.initiative, lore: @hero.lore, luck: @hero.luck, max_grit: @hero.max_grit, melee: @hero.melee, name: @hero.name, range: @hero.range, sanity: @hero.sanity, spirit: @hero.spirit, strength: @hero.strength } }
+    patch hero_url(@hero), params: { hero: { agility: @hero.agility, combat: @hero.combat, cunning: @hero.cunning, health: @hero.health, initiative: @hero.initiative, lore: @hero.lore, luck: @hero.luck, max_grit: @hero.max_grit, melee_to_hit: @hero.melee_to_hit, name: @hero.name, range_to_hit: @hero.range_to_hit, sanity: @hero.sanity, spirit: @hero.spirit, strength: @hero.strength } }
     assert_redirected_to hero_url(@hero)
   end
 

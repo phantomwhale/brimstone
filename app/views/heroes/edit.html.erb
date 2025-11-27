@@ -1,8 +1,183 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing hero</h1>
+<%= form_with(model: @hero, class: "w-full max-w-4xl mx-auto") do |form| %>
+  <% if @hero.errors.any? %>
+    <div class="bg-red-50 border-2 border-blood rounded p-4 mb-4 text-blood font-body">
+      <h2 class="font-bold"><%= pluralize(@hero.errors.count, "error") %> prohibited this hero from being saved:</h2>
+      <ul class="list-disc list-inside mt-2">
+        <% @hero.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <%= render "form", hero: @hero %>
+  <div class="hero-sheet">
+    <%# Header Section %>
+    <header class="sheet-header">
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-3">
+          <%= form.label :name, "Name:", class: "font-serif font-bold text-parchment-light" %>
+          <%= form.text_field :name, class: "hero-name-input", placeholder: "Enter hero name" %>
+        </div>
+        <div class="flex items-center gap-2">
+          <%= form.label :hero_class, "Class:", class: "font-serif font-bold text-parchment-light text-sm" %>
+          <%= form.select :hero_class,
+              options_for_select(HeroClasses.names.map { |name| [name.titleize.gsub('_', ' '), name] }, @hero.hero_class),
+              { include_blank: "Select Class" },
+              { class: "hero-class-select" } %>
+        </div>
+      </div>
+      <div class="sheet-header-title">
+        <h1>Shadows of Brimstone</h1>
+        <h2>Hero Sheet</h2>
+      </div>
+    </header>
 
-  <%= link_to "Show this hero", @hero, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to heroes", heroes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+    <div class="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-6 p-6">
+      <%# Left Column: Portrait Area %>
+      <aside class="flex flex-col gap-4">
+        <div class="portrait-frame">
+          <div class="portrait-placeholder">
+            <span>Portrait</span>
+          </div>
+        </div>
+        <div class="info-box">
+          <h3 class="info-box-title">Keywords</h3>
+          <div class="min-h-[40px]"></div>
+        </div>
+        <div class="info-box">
+          <h3 class="info-box-title">Modifiers for the Current Adventure...</h3>
+          <div class="min-h-[40px]"></div>
+        </div>
+      </aside>
+
+      <%# Main Stats Area %>
+      <main class="flex flex-col gap-5">
+        <%# Top row: Attributes + Initiative/Corruption %>
+        <div class="flex gap-4">
+          <%# Core Attributes (6 stats in 2 rows of 3) %>
+          <section class="attributes-section flex-1">
+            <div class="grid grid-cols-3 gap-4 mb-4">
+              <div class="flex flex-col items-center gap-2">
+                <%= form.label :agility, class: "attribute-label" %>
+                <%= form.number_field :agility, class: "attribute-input", min: 0 %>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <%= form.label :cunning, class: "attribute-label" %>
+                <%= form.number_field :cunning, class: "attribute-input", min: 0 %>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <%= form.label :spirit, class: "attribute-label" %>
+                <%= form.number_field :spirit, class: "attribute-input", min: 0 %>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+              <div class="flex flex-col items-center gap-2">
+                <%= form.label :strength, class: "attribute-label" %>
+                <%= form.number_field :strength, class: "attribute-input", min: 0 %>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <%= form.label :lore, class: "attribute-label" %>
+                <%= form.number_field :lore, class: "attribute-input", min: 0 %>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <%= form.label :luck, class: "attribute-label" %>
+                <%= form.number_field :luck, class: "attribute-input", min: 0 %>
+              </div>
+            </div>
+          </section>
+
+          <%# Initiative & Corruption (stacked on right) %>
+          <div class="flex flex-col gap-4">
+            <div class="initiative-box">
+              <%= form.label :initiative, class: "font-western text-xs text-parchment-light uppercase" %>
+              <%= form.number_field :initiative, class: "initiative-input", min: 0 %>
+            </div>
+            <div class="corruption-box">
+              <%= form.label :corrupt_resist, "Corruption Resistance", class: "font-western text-[10px] text-parchment-light uppercase text-center leading-tight" %>
+              <%= form.number_field :corrupt_resist, class: "corruption-input", min: 0 %>
+            </div>
+          </div>
+        </div>
+
+        <%# Combat Stats Section %>
+        <section class="combat-section">
+          <div class="flex flex-wrap gap-6 items-start">
+            <div>
+              <h3 class="font-western text-base text-wood-dark mb-3">To Hit:</h3>
+              <div class="flex gap-6">
+                <div class="flex flex-col items-center gap-2">
+                  <%= form.label :range_to_hit, "Ranged", class: "font-serif text-sm font-bold text-wood-dark" %>
+                  <%= form.number_field :range_to_hit, class: "to-hit-input", min: 0 %>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                  <%= form.label :melee_to_hit, "Melee", class: "font-serif text-sm font-bold text-wood-dark" %>
+                  <%= form.number_field :melee_to_hit, class: "to-hit-input", min: 0 %>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center gap-2 bg-parchment-light border-2 border-wood rounded-md px-3 py-2">
+                <%= form.label :combat, "Combat:", class: "font-serif text-sm font-bold text-wood-dark whitespace-nowrap" %>
+                <%= form.number_field :combat, class: "combat-input", min: 0 %>
+              </div>
+              <div class="flex items-center gap-2 bg-parchment-light border-2 border-wood rounded-md px-3 py-2">
+                <%= form.label :max_grit, "Max Grit:", class: "font-serif text-sm font-bold text-wood-dark whitespace-nowrap" %>
+                <%= form.number_field :max_grit, class: "combat-input", min: 0 %>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <%# Health and Sanity Section %>
+        <section class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="health-section">
+            <div class="font-western text-lg text-parchment-light uppercase text-center mb-3" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+              Health
+            </div>
+            <div class="flex items-center gap-4">
+              <%= form.number_field :health, class: "health-input", min: 0, placeholder: "HP" %>
+              <div class="flex flex-col items-center gap-1">
+                <%= form.label :defense, class: "font-serif text-xs text-parchment-light uppercase" %>
+                <%= form.number_field :defense, class: "defense-input", min: 0 %>
+              </div>
+            </div>
+          </div>
+          <div class="sanity-section">
+            <div class="font-western text-lg text-parchment-light uppercase text-center mb-3" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+              Sanity
+            </div>
+            <div class="flex items-center gap-4">
+              <%= form.number_field :sanity, class: "sanity-input", min: 0, placeholder: "San" %>
+              <div class="flex flex-col items-center gap-1">
+                <%= form.label :willpower, class: "font-serif text-xs text-parchment-light uppercase" %>
+                <%= form.number_field :willpower, class: "willpower-input", min: 0 %>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <%# Resources Section %>
+        <section class="resources-section">
+          <h3 class="font-western text-lg text-wood-dark text-center border-b-2 border-parchment-border pb-2 mb-4">
+            Resources
+          </h3>
+          <div class="flex justify-center">
+            <div class="flex flex-col items-center gap-2">
+              <%= form.label :side_bag_tokens, "Max Side Bag Tokens", class: "font-serif text-sm font-bold text-wood-dark text-center" %>
+              <%= form.number_field :side_bag_tokens, class: "resource-input", min: 0 %>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <%# Form Actions %>
+    <footer class="sheet-footer">
+      <div class="flex justify-center gap-4 flex-wrap">
+        <%= form.submit "Save Hero", class: "btn-save" %>
+        <%= link_to "Cancel", @hero, class: "btn-secondary" %>
+        <%= link_to "Back to Heroes", heroes_path, class: "btn-secondary" %>
+      </div>
+    </footer>
+  </div>
+<% end %>
