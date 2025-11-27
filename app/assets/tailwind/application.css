@@ -1,1 +1,3 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;700&display=swap');
 @import "tailwindcss";
+@import "../stylesheets/application.tailwind.css";

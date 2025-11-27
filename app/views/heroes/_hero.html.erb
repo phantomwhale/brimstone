@@ -21,9 +21,13 @@
     <%# Left Column: Portrait Area %>
     <aside class="flex flex-col gap-4">
       <div class="portrait-frame">
-        <div class="portrait-placeholder">
-          <span>Portrait</span>
-        </div>
+        <% if hero.portrait.present? %>
+          <%= image_tag "portraits/#{hero.portrait}.jpg", class: "portrait-image", alt: portrait_display_name(hero.portrait) %>
+        <% else %>
+          <div class="portrait-placeholder">
+            <span>No Portrait</span>
+          </div>
+        <% end %>
       </div>
       <div class="info-box">
         <h3 class="info-box-title">Keywords</h3>
@@ -146,11 +150,7 @@
         <h3 class="font-western text-lg text-wood-dark text-center border-b-2 border-parchment-border pb-2 mb-4">
           Resources
         </h3>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div class="flex flex-col items-center gap-2">
-            <span class="font-serif text-sm font-bold text-wood-dark text-center">Side Bag</span>
-            <div class="resource-display"><%= hero.side_bag_tokens %></div>
-          </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
           <div class="flex flex-col items-center gap-2">
             <span class="font-serif text-sm font-bold text-wood-dark text-center">Experience</span>
             <div class="resource-display"><%= hero.experience %></div>
@@ -164,6 +164,31 @@
             <div class="resource-display darkstone"><%= hero.dark_stone %></div>
           </div>
         </div>
+      </section>
+      
+      <%# Side Bag Section %>
+      <section class="sidebag-section-display">
+        <div class="flex items-center justify-between border-b-2 border-parchment-border pb-2 mb-4">
+          <h3 class="font-western text-lg text-wood-dark">Side Bag</h3>
+          <span class="font-serif text-sm text-wood-dark">
+            <%= hero.sidebag_count %> / <%= hero.sidebag_capacity || 5 %> tokens
+          </span>
+        </div>
+        
+        <% if hero.sidebag_tokens.any? %>
+          <div class="sidebag-tokens-display">
+            <% hero.sidebag_tokens.each do |token| %>
+              <div class="sidebag-token-display" title="<%= token_display_name(token) %>">
+                <%= image_tag "tokens/sidebag/#{token}.png", alt: token_display_name(token), class: "sidebag-token-image-display" %>
+                <span class="sidebag-token-name-display"><%= token_display_name(token) %></span>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="text-center text-parchment-border italic py-4">
+            No tokens in side bag
+          </div>
+        <% end %>
       </section>
     </main>
   </div>
