@@ -161,10 +161,22 @@
           <h3 class="font-western text-lg text-wood-dark text-center border-b-2 border-parchment-border pb-2 mb-4">
             Resources
           </h3>
-          <div class="flex justify-center">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div class="flex flex-col items-center gap-2">
-              <%= form.label :side_bag_tokens, "Max Side Bag Tokens", class: "font-serif text-sm font-bold text-wood-dark text-center" %>
+              <%= form.label :side_bag_tokens, "Side Bag", class: "font-serif text-sm font-bold text-wood-dark text-center" %>
               <%= form.number_field :side_bag_tokens, class: "resource-input", min: 0 %>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <%= form.label :experience, "Experience", class: "font-serif text-sm font-bold text-wood-dark text-center" %>
+              <%= form.number_field :experience, class: "resource-input", min: 0 %>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <%= form.label :gold, "Gold", class: "font-serif text-sm font-bold text-wood-dark text-center" %>
+              <%= form.number_field :gold, class: "resource-input gold", min: 0 %>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <%= form.label :dark_stone, "Dark Stone", class: "font-serif text-sm font-bold text-wood-dark text-center" %>
+              <%= form.number_field :dark_stone, class: "resource-input darkstone", min: 0 %>
             </div>
           </div>
         </section>

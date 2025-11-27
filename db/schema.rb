@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_24_122705) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_27_125410) do
   create_table "heros", force: :cascade do |t|
     t.string "name"
     t.integer "health"
@@ -33,5 +33,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_24_122705) do
     t.integer "willpower"
     t.integer "corrupt_resist"
     t.integer "side_bag_tokens"
+    t.integer "experience", default: 0
+    t.integer "gold", default: 0
+    t.integer "dark_stone", default: 0
   end
 end

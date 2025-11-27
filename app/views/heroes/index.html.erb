@@ -1,21 +1,77 @@
-<div class="w-full">
+<div class="w-full max-w-6xl mx-auto">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <p class="py-2 px-3 bg-green-900/50 mb-5 text-green-300 font-medium rounded-lg inline-block border border-green-700" id="notice"><%= notice %></p>
   <% end %>
 
   <% content_for :title, "Heroes" %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Heroes</h1>
-    <%= link_to "New hero", new_hero_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <%# Page Header %>
+  <div class="hero-sheet mb-8">
+    <header class="sheet-header">
+      <div class="flex-1">
+        <h1 class="font-western text-3xl text-gold" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Hero Roster</h1>
+        <p class="font-body text-parchment-light text-sm mt-1">Brave souls venturing into the Shadows of Brimstone</p>
+      </div>
+      <div>
+        <%= link_to "New Hero", new_hero_path, class: "btn-save" %>
+      </div>
+    </header>
   </div>
 
-  <div id="heroes" class="min-w-full">
-    <% @heroes.each do |hero| %>
-      <%= render "heroes/hero", hero: hero %>
-      <p>
-        <%= link_to "Show this hero", hero, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
-    <% end %>
-  </div>
+  <%# Heroes Grid %>
+  <% if @heroes.any? %>
+    <div id="heroes" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @heroes.each do |hero| %>
+        <%= link_to hero, class: "block group" do %>
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <h2 class="font-western text-lg text-gold truncate"><%= hero.name %></h2>
+              <span class="font-body text-sm text-parchment-light"><%= hero.hero_class&.titleize&.gsub('_', ' ') || 'Unknown' %></span>
+            </div>
+            
+            <div class="hero-card-body">
+              <%# Mini Attributes Grid %>
+              <div class="grid grid-cols-3 gap-2 mb-4">
+                <% [
+                  ['AGI', hero.agility],
+                  ['CUN', hero.cunning],
+                  ['SPI', hero.spirit],
+                  ['STR', hero.strength],
+                  ['LOR', hero.lore],
+                  ['LCK', hero.luck]
+                ].each do |abbr, value| %>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[10px] font-bold text-wood-dark uppercase"><%= abbr %></span>
+                    <div class="mini-stat-circle"><%= value %></div>
+                  </div>
+                <% end %>
+              </div>
+
+              <%# Health & Sanity %>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="mini-health-bar">
+                  <span class="text-xs font-bold uppercase">Health</span>
+                  <span class="text-lg font-bold"><%= hero.health %></span>
+                </div>
+                <div class="mini-sanity-bar">
+                  <span class="text-xs font-bold uppercase">Sanity</span>
+                  <span class="text-lg font-bold"><%= hero.sanity %></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-card-footer">
+              <span class="text-xs text-parchment-light/70 group-hover:text-gold transition-colors">Click to view details</span>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="hero-sheet p-8 text-center">
+      <div class="font-western text-2xl text-wood-dark mb-4">No Heroes Yet</div>
+      <p class="font-body text-parchment-border mb-6">The frontier awaits brave souls willing to venture into the darkness.</p>
+      <%= link_to "Create Your First Hero", new_hero_path, class: "btn-save" %>
+    </div>
+  <% end %>
 </div>

@@ -1,190 +1,206 @@
-<div id="<%= dom_id hero %>" class="bg-amber-50 border-4 border-amber-800 rounded-lg shadow-2xl max-w-4xl mx-auto" style="background: linear-gradient(45deg, #fef3c7 0%, #f7e6a3 25%, #fef3c7 50%, #f7e6a3 75%, #fef3c7 100%); background-size: 20px 20px;">
-
-<!-- Header Section -->
-  <div class="bg-gradient-to-r from-red-900 to-red-700 text-white p-4 rounded-t border-b-4 border-amber-800">
-    <div class="flex justify-between items-center">
-      <div>
-        <h1 class="text-2xl font-bold uppercase tracking-wider">Shadows of Brimstone</h1>
-        <div class="text-lg font-semibold">Hero Sheet</div>
+<div id="<%= dom_id hero %>" class="hero-sheet max-w-4xl mx-auto">
+  <%# Header Section %>
+  <header class="sheet-header">
+    <div class="flex-1">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="font-serif font-bold text-parchment-light">Name:</span>
+        <span class="font-body text-xl text-gold"><%= hero.name %></span>
       </div>
-      <div class="text-right">
-        <div class="text-sm">Level: 1</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Content Grid -->
-  <div class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-    <!-- Left Column - Character Info -->
-    <div class="lg:col-span-1">
-      <!-- Name & Class Section -->
-      <div class="bg-amber-100 border-2 border-amber-700 rounded-lg p-4 mb-4 shadow-inner">
-        <div class="border-b border-amber-600 pb-2 mb-3">
-          <label class="text-xs uppercase tracking-wide text-amber-800 font-bold">Name:</label>
-          <div class="text-lg font-bold text-amber-900"><%= hero.name %></div>
-        </div>
-        <div>
-          <label class="text-xs uppercase tracking-wide text-amber-800 font-bold">Class:</label>
-          <div class="text-lg font-bold text-red-800"><%= hero.hero_class&.humanize %></div>
-        </div>
-      </div>
-
-      <!-- Core Attributes Grid -->
-      <div class="grid grid-cols-3 gap-2 mb-4">
-        <% [
-          ['Agility', hero.agility],
-          ['Cunning', hero.cunning],
-          ['Spirit', hero.spirit],
-          ['Strength', hero.strength],
-          ['Lore', hero.lore],
-          ['Luck', hero.luck]
-        ].each do |attr_name, value| %>
-          <div class="bg-amber-200 border-2 border-amber-600 rounded text-center p-2">
-            <div class="text-xs uppercase font-bold text-amber-800"><%= attr_name %></div>
-            <div class="text-2xl font-bold text-amber-900 bg-white rounded border border-amber-500 h-10 flex items-center justify-center"><%= value %></div>
-          </div>
-        <% end %>
-      </div>
-
-      <!-- Initiative & Corruption -->
-      <div class="flex gap-2 mb-4">
-        <div class="flex-1 bg-green-100 border-2 border-green-600 rounded p-2 text-center">
-          <div class="text-xs uppercase font-bold text-green-800">Initiative</div>
-          <div class="text-xl font-bold text-green-900 bg-white rounded border h-8 flex items-center justify-center"><%= hero.initiative %></div>
-        </div>
-        <div class="flex-1 bg-purple-100 border-2 border-purple-600 rounded p-2 text-center">
-          <div class="text-xs uppercase font-bold text-purple-800">Corruption Resistance</div>
-          <div class="text-xl font-bold text-purple-900 bg-white rounded border h-8 flex items-center justify-center"><%= hero.corrupt_resist %></div>
-        </div>
+      <div class="flex items-center gap-2">
+        <span class="font-serif font-bold text-parchment-light text-sm">Class:</span>
+        <span class="font-body text-lg text-parchment-light"><%= hero.hero_class&.titleize&.gsub('_', ' ') %></span>
       </div>
     </div>
-
-    <!-- Middle Column - Combat Stats -->
-    <div class="lg:col-span-1">
-      <!-- Combat Section -->
-      <div class="bg-red-100 border-2 border-red-600 rounded-lg p-4 mb-4">
-        <h3 class="text-sm uppercase font-bold text-red-800 border-b border-red-400 pb-1 mb-3">Combat Stats</h3>
-
-        <div class="grid grid-cols-2 gap-3 mb-3">
-          <div class="bg-white border border-red-400 rounded p-2 text-center">
-            <div class="text-xs font-bold text-red-700">To Hit: Ranged</div>
-            <div class="text-lg font-bold text-red-900"><%= hero.range_to_hit %></div>
-          </div>
-          <div class="bg-white border border-red-400 rounded p-2 text-center">
-            <div class="text-xs font-bold text-red-700">To Hit: Melee</div>
-            <div class="text-lg font-bold text-red-900"><%= hero.melee_to_hit %></div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 gap-2">
-          <div class="bg-white border border-red-400 rounded p-2 text-center">
-            <div class="text-xs font-bold text-red-700">Combat</div>
-            <div class="text-lg font-bold text-red-900"><%= hero.combat %></div>
-          </div>
-          <div class="bg-white border border-red-400 rounded p-2 text-center">
-            <div class="text-xs font-bold text-red-700">Max Grit</div>
-            <div class="text-lg font-bold text-red-900"><%= hero.max_grit %></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Health & Sanity Section -->
-      <div class="grid grid-cols-2 gap-3 mb-4">
-        <div class="bg-red-200 border-2 border-red-700 rounded p-3">
-          <div class="text-center">
-            <div class="text-sm uppercase font-bold text-red-800">Health</div>
-            <div class="text-2xl font-bold text-red-900 bg-white rounded border-2 border-red-600 h-12 flex items-center justify-center mt-1"><%= hero.health %></div>
-            <div class="text-xs text-red-700 mt-1">Defense: <%= hero.defense %></div>
-          </div>
-        </div>
-        <div class="bg-blue-200 border-2 border-blue-700 rounded p-3">
-          <div class="text-center">
-            <div class="text-sm uppercase font-bold text-blue-800">Sanity</div>
-            <div class="text-2xl font-bold text-blue-900 bg-white rounded border-2 border-blue-600 h-12 flex items-center justify-center mt-1"><%= hero.sanity %></div>
-            <div class="text-xs text-blue-700 mt-1">Willpower: <%= hero.willpower %></div>
-          </div>
-        </div>
-      </div>
+    <div class="sheet-header-title">
+      <h1>Shadows of Brimstone</h1>
+      <h2>Hero Sheet</h2>
     </div>
+  </header>
 
-    <!-- Right Column - Resources -->
-    <div class="lg:col-span-1">
-      <!-- Resources Section -->
-      <div class="bg-yellow-100 border-2 border-yellow-600 rounded-lg p-4 mb-4">
-        <h3 class="text-sm uppercase font-bold text-yellow-800 border-b border-yellow-400 pb-1 mb-3">Resources</h3>
-
-        <div class="space-y-2">
-          <div class="flex justify-between items-center bg-white border border-yellow-400 rounded p-2">
-            <span class="text-sm font-medium text-yellow-800">Side Bag Tokens:</span>
-            <span class="font-bold text-yellow-900"><%= hero.side_bag_tokens %></span>
-          </div>
-          <div class="flex justify-between items-center bg-white border border-yellow-400 rounded p-2">
-            <span class="text-sm font-medium text-yellow-800">Experience:</span>
-            <span class="font-bold text-yellow-900">0</span>
-          </div>
-          <div class="flex justify-between items-center bg-white border border-yellow-400 rounded p-2">
-            <span class="text-sm font-medium text-yellow-800">Gold:</span>
-            <span class="font-bold text-yellow-900">0</span>
-          </div>
-          <div class="flex justify-between items-center bg-white border border-yellow-400 rounded p-2">
-            <span class="text-sm font-medium text-yellow-800">Dark Stone:</span>
-            <span class="font-bold text-yellow-900">0</span>
-          </div>
+  <div class="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-6 p-6">
+    <%# Left Column: Portrait Area %>
+    <aside class="flex flex-col gap-4">
+      <div class="portrait-frame">
+        <div class="portrait-placeholder">
+          <span>Portrait</span>
         </div>
       </div>
-
-      <!-- Keywords Section -->
-      <div class="bg-gray-100 border-2 border-gray-600 rounded-lg p-4">
-        <h3 class="text-sm uppercase font-bold text-gray-800 border-b border-gray-400 pb-1 mb-3">Keywords</h3>
-        <div class="bg-white border border-gray-400 rounded p-2 h-20 text-sm text-gray-600">
-          <!-- Keywords would go here -->
+      <div class="info-box">
+        <h3 class="info-box-title">Keywords</h3>
+        <div class="min-h-[40px] text-center text-sm text-parchment-border italic">
           <em>No keywords assigned</em>
         </div>
       </div>
-    </div>
+      <div class="info-box">
+        <h3 class="info-box-title">Modifiers for the Current Adventure...</h3>
+        <div class="min-h-[40px] text-center text-sm text-parchment-border italic">
+          <em>None</em>
+        </div>
+      </div>
+    </aside>
+
+    <%# Main Stats Area %>
+    <main class="flex flex-col gap-5">
+      <%# Top row: Attributes + Initiative/Corruption %>
+      <div class="flex gap-4">
+        <%# Core Attributes (6 stats in 2 rows of 3) %>
+        <section class="attributes-section flex-1">
+          <div class="grid grid-cols-3 gap-4 mb-4">
+            <% [
+              ['Agility', hero.agility],
+              ['Cunning', hero.cunning],
+              ['Spirit', hero.spirit]
+            ].each do |attr_name, value| %>
+              <div class="flex flex-col items-center gap-2">
+                <span class="attribute-label"><%= attr_name %></span>
+                <div class="attribute-display"><%= value %></div>
+              </div>
+            <% end %>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <% [
+              ['Strength', hero.strength],
+              ['Lore', hero.lore],
+              ['Luck', hero.luck]
+            ].each do |attr_name, value| %>
+              <div class="flex flex-col items-center gap-2">
+                <span class="attribute-label"><%= attr_name %></span>
+                <div class="attribute-display"><%= value %></div>
+              </div>
+            <% end %>
+          </div>
+        </section>
+
+        <%# Initiative & Corruption (stacked on right) %>
+        <div class="flex flex-col gap-4">
+          <div class="initiative-box">
+            <span class="font-western text-xs text-parchment-light uppercase">Initiative</span>
+            <div class="initiative-display"><%= hero.initiative %></div>
+          </div>
+          <div class="corruption-box">
+            <span class="font-western text-[10px] text-parchment-light uppercase text-center leading-tight">Corruption Resistance</span>
+            <div class="corruption-display"><%= hero.corrupt_resist %></div>
+          </div>
+        </div>
+      </div>
+
+      <%# Combat Stats Section %>
+      <section class="combat-section">
+        <div class="flex flex-wrap gap-6 items-start">
+          <div>
+            <h3 class="font-western text-base text-wood-dark mb-3">To Hit:</h3>
+            <div class="flex gap-6">
+              <div class="flex flex-col items-center gap-2">
+                <span class="font-serif text-sm font-bold text-wood-dark">Ranged</span>
+                <div class="to-hit-display"><%= hero.range_to_hit %></div>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <span class="font-serif text-sm font-bold text-wood-dark">Melee</span>
+                <div class="to-hit-display"><%= hero.melee_to_hit %></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <div class="flex items-center gap-2 bg-parchment-light border-2 border-wood rounded-md px-3 py-2">
+              <span class="font-serif text-sm font-bold text-wood-dark whitespace-nowrap">Combat:</span>
+              <div class="combat-display"><%= hero.combat %></div>
+            </div>
+            <div class="flex items-center gap-2 bg-parchment-light border-2 border-wood rounded-md px-3 py-2">
+              <span class="font-serif text-sm font-bold text-wood-dark whitespace-nowrap">Max Grit:</span>
+              <div class="combat-display"><%= hero.max_grit %></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <%# Health and Sanity Section %>
+      <section class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="health-section">
+          <div class="font-western text-lg text-parchment-light uppercase text-center mb-3" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            Health
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="health-display"><%= hero.health %></div>
+            <div class="flex flex-col items-center gap-1">
+              <span class="font-serif text-xs text-parchment-light uppercase">Defense</span>
+              <div class="defense-display"><%= hero.defense %></div>
+            </div>
+          </div>
+        </div>
+        <div class="sanity-section">
+          <div class="font-western text-lg text-parchment-light uppercase text-center mb-3" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            Sanity
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="sanity-display"><%= hero.sanity %></div>
+            <div class="flex flex-col items-center gap-1">
+              <span class="font-serif text-xs text-parchment-light uppercase">Willpower</span>
+              <div class="willpower-display"><%= hero.willpower %></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <%# Resources Section %>
+      <section class="resources-section">
+        <h3 class="font-western text-lg text-wood-dark text-center border-b-2 border-parchment-border pb-2 mb-4">
+          Resources
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="flex flex-col items-center gap-2">
+            <span class="font-serif text-sm font-bold text-wood-dark text-center">Side Bag</span>
+            <div class="resource-display"><%= hero.side_bag_tokens %></div>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <span class="font-serif text-sm font-bold text-wood-dark text-center">Experience</span>
+            <div class="resource-display"><%= hero.experience %></div>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <span class="font-serif text-sm font-bold text-wood-dark text-center">Gold</span>
+            <div class="resource-display gold"><%= hero.gold %></div>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <span class="font-serif text-sm font-bold text-wood-dark text-center">Dark Stone</span>
+            <div class="resource-display darkstone"><%= hero.dark_stone %></div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 
-  <!-- Bottom Sections -->
+  <%# Bottom Sections: Items & Abilities %>
   <div class="p-6 pt-0 grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-    <!-- Items Section -->
-    <div class="bg-brown-100 border-2 border-amber-700 rounded-lg p-4">
-      <h3 class="text-lg uppercase font-bold text-amber-800 border-b-2 border-amber-600 pb-2 mb-4 text-center">Items</h3>
-      <div class="text-sm text-gray-600 mb-2">Personal Items / Upgrades / Clothing</div>
-      <div class="bg-white border border-amber-600 rounded p-3 h-32">
-        <div class="text-sm text-gray-500 italic">No items assigned</div>
+    <div class="info-box">
+      <h3 class="font-western text-lg text-wood-dark text-center border-b-2 border-parchment-border pb-2 mb-4">Items</h3>
+      <div class="text-sm text-parchment-border mb-2 text-center">Personal Items / Upgrades / Clothing</div>
+      <div class="bg-white/50 border border-parchment-border rounded p-3 min-h-[80px]">
+        <div class="text-sm text-parchment-border italic text-center">No items assigned</div>
       </div>
     </div>
 
-    <!-- Abilities Section -->
-    <div class="bg-brown-100 border-2 border-amber-700 rounded-lg p-4">
-      <h3 class="text-lg uppercase font-bold text-amber-800 border-b-2 border-amber-600 pb-2 mb-4 text-center">Abilities</h3>
-      <div class="text-sm text-gray-600 mb-2">Starting Upgrades</div>
-      <div class="bg-white border border-amber-600 rounded p-3 h-32">
-        <div class="text-sm text-gray-500 italic">No abilities assigned</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Injuries/Madness/Mutations Section -->
-  <div class="p-6 pt-0">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bg-red-50 border-2 border-red-600 rounded-lg p-4">
-        <h3 class="text-lg uppercase font-bold text-red-800 border-b-2 border-red-500 pb-2 mb-4 text-center">Injuries / Madness</h3>
-        <div class="bg-white border border-red-500 rounded p-3 h-24">
-          <div class="text-sm text-gray-500 italic">No injuries or madness</div>
-        </div>
-      </div>
-
-      <div class="bg-purple-50 border-2 border-purple-600 rounded-lg p-4">
-        <h3 class="text-lg uppercase font-bold text-purple-800 border-b-2 border-purple-500 pb-2 mb-4 text-center">Mutations</h3>
-        <div class="bg-white border border-purple-500 rounded p-3 h-24">
-          <div class="text-sm text-gray-500 italic">No mutations</div>
-        </div>
+    <div class="info-box">
+      <h3 class="font-western text-lg text-wood-dark text-center border-b-2 border-parchment-border pb-2 mb-4">Abilities</h3>
+      <div class="text-sm text-parchment-border mb-2 text-center">Starting Upgrades</div>
+      <div class="bg-white/50 border border-parchment-border rounded p-3 min-h-[80px]">
+        <div class="text-sm text-parchment-border italic text-center">No abilities assigned</div>
       </div>
     </div>
   </div>
 
+  <%# Injuries/Madness/Mutations Section %>
+  <div class="p-6 pt-0 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="injuries-section">
+      <h3 class="font-western text-lg text-parchment-light text-center border-b-2 border-health-border pb-2 mb-4">Injuries / Madness</h3>
+      <div class="bg-parchment-light/20 border border-health-border rounded p-3 min-h-[60px]">
+        <div class="text-sm text-parchment-light/70 italic text-center">No injuries or madness</div>
+      </div>
+    </div>
+
+    <div class="mutations-section">
+      <h3 class="font-western text-lg text-parchment-light text-center border-b-2 border-purple-800 pb-2 mb-4">Mutations</h3>
+      <div class="bg-parchment-light/20 border border-purple-800 rounded p-3 min-h-[60px]">
+        <div class="text-sm text-parchment-light/70 italic text-center">No mutations</div>
+      </div>
+    </div>
+  </div>
 </div>
