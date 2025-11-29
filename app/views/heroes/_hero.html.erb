@@ -256,23 +256,23 @@
   <div class="p-6 pt-0">
     <section class="adjustments-section">
       <div class="flex items-center justify-between border-b-2 border-parchment-border pb-2 mb-4">
-        <h3 class="font-western text-lg text-wood-dark">Active Adjustments</h3>
+        <h3 class="font-western text-lg text-wood-dark">Adjustments</h3>
         <span class="font-serif text-sm text-wood-dark">
           <%= hero.adjustments.active.count %> active / <%= hero.adjustments.count %> total
         </span>
       </div>
       
-      <div id="adjustments-list" class="adjustments-list mb-4">
+      <div id="adjustments-list" class="adjustments-list">
         <% if hero.adjustments.any? %>
           <%= render hero.adjustments.order(active: :desc, created_at: :desc) %>
         <% else %>
-          <div class="text-center text-parchment-border italic py-4">
-            No adjustments - add one below
+          <div class="text-center text-parchment-border italic py-4" id="no-adjustments-message">
+            No adjustments yet
           </div>
         <% end %>
       </div>
       
-      <div class="adjustment-form-container">
+      <div class="mt-4">
         <%= render "adjustments/form", hero: hero, adjustment: hero.adjustments.build %>
       </div>
     </section>

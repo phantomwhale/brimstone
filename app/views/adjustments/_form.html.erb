@@ -1,40 +1,108 @@
-<%= form_with(model: [hero, adjustment], id: "adjustment-form", class: "adjustment-form") do |form| %>
-  <div class="adjustment-form-header">
-    <h4 class="font-western text-base text-wood-dark">
-      <%= adjustment.new_record? ? "Add New Adjustment" : "Edit Adjustment" %>
-    </h4>
-  </div>
-  
-  <div class="adjustment-form-body">
-    <div class="mb-4">
-      <%= form.label :title, "Title", class: "font-serif text-sm font-bold text-wood-dark block mb-1" %>
-      <%= form.text_field :title, class: "adjustment-title-input", placeholder: "e.g., Strength Potion, Cursed Ring" %>
+<dialog id="adjustment-modal" class="adjustment-modal">
+  <div class="adjustment-modal-content">
+    <div class="adjustment-modal-header">
+      <h3 class="font-western text-lg text-gold">
+        <%= adjustment.new_record? ? "Add New Adjustment" : "Edit Adjustment" %>
+      </h3>
+      <button type="button" onclick="document.getElementById('adjustment-modal').close()" class="adjustment-modal-close">&times;</button>
     </div>
     
-    <div class="adjustment-modifiers-grid">
-      <% Adjustment::ADJUSTABLE_ATTRIBUTES.each do |attr| %>
-        <div class="adjustment-modifier-item">
-          <label for="adjustment_modifiers_<%= attr %>" class="modifier-label"><%= attr.titleize.gsub('_', ' ') %></label>
-          <input type="number" 
-                 name="adjustment[modifiers][<%= attr %>]" 
-                 id="adjustment_modifiers_<%= attr %>"
-                 value="<%= adjustment.modifier_for(attr).nonzero? %>" 
-                 class="modifier-input" 
-                 placeholder="0">
+    <%= form_with(model: [hero, adjustment], id: "adjustment-form", class: "adjustment-modal-form") do |form| %>
+      <div class="adjustment-modal-body">
+        <%# Title and Active %>
+        <div class="adjustment-form-section">
+          <div class="mb-4">
+            <%= form.label :title, "Title", class: "font-serif text-sm font-bold text-wood-dark block mb-1" %>
+            <%= form.text_field :title, class: "adjustment-title-input", placeholder: "e.g., Strength Potion, Cursed Ring, Whiskey" %>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <%= form.check_box :active, class: "adjustment-active-checkbox" %>
+            <%= form.label :active, "Active immediately", class: "font-serif text-sm text-wood-dark" %>
+          </div>
         </div>
-      <% end %>
-    </div>
-    
-    <div class="mt-4 flex items-center gap-2">
-      <%= form.check_box :active, class: "adjustment-active-checkbox" %>
-      <%= form.label :active, "Active", class: "font-serif text-sm text-wood-dark" %>
-    </div>
-  </div>
-  
-  <div class="adjustment-form-footer">
-    <%= form.submit adjustment.new_record? ? "Add Adjustment" : "Update Adjustment", class: "btn-add-adjustment" %>
-    <% unless adjustment.new_record? %>
-      <%= link_to "Cancel", hero_path(hero), class: "btn-cancel-adjustment" %>
+        
+        <%# Core Attributes Group %>
+        <div class="adjustment-form-section">
+          <h4 class="adjustment-group-title">Core Attributes</h4>
+          <div class="adjustment-modifiers-grid-grouped">
+            <% %w[agility cunning spirit strength lore luck].each do |attr| %>
+              <div class="adjustment-modifier-item">
+                <label for="adjustment_modifiers_<%= attr %>" class="modifier-label"><%= attr.titleize %></label>
+                <input type="number" 
+                       name="adjustment[modifiers][<%= attr %>]" 
+                       id="adjustment_modifiers_<%= attr %>"
+                       value="<%= adjustment.modifier_for(attr).nonzero? %>" 
+                       class="modifier-input" 
+                       placeholder="0">
+              </div>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# Health & Sanity Group %>
+        <div class="adjustment-form-section">
+          <h4 class="adjustment-group-title">Health & Sanity</h4>
+          <div class="adjustment-modifiers-grid-grouped">
+            <% %w[health defense sanity willpower].each do |attr| %>
+              <div class="adjustment-modifier-item">
+                <label for="adjustment_modifiers_<%= attr %>" class="modifier-label"><%= attr.titleize %></label>
+                <input type="number" 
+                       name="adjustment[modifiers][<%= attr %>]" 
+                       id="adjustment_modifiers_<%= attr %>"
+                       value="<%= adjustment.modifier_for(attr).nonzero? %>" 
+                       class="modifier-input" 
+                       placeholder="0">
+              </div>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# Combat Group %>
+        <div class="adjustment-form-section">
+          <h4 class="adjustment-group-title">Combat</h4>
+          <div class="adjustment-modifiers-grid-grouped">
+            <% %w[range_to_hit melee_to_hit combat max_grit].each do |attr| %>
+              <div class="adjustment-modifier-item">
+                <label for="adjustment_modifiers_<%= attr %>" class="modifier-label"><%= attr.titleize.gsub('_', ' ') %></label>
+                <input type="number" 
+                       name="adjustment[modifiers][<%= attr %>]" 
+                       id="adjustment_modifiers_<%= attr %>"
+                       value="<%= adjustment.modifier_for(attr).nonzero? %>" 
+                       class="modifier-input" 
+                       placeholder="0">
+              </div>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# Other Group %>
+        <div class="adjustment-form-section">
+          <h4 class="adjustment-group-title">Other</h4>
+          <div class="adjustment-modifiers-grid-grouped">
+            <% %w[initiative corrupt_resist sidebag_capacity].each do |attr| %>
+              <div class="adjustment-modifier-item">
+                <label for="adjustment_modifiers_<%= attr %>" class="modifier-label"><%= attr.titleize.gsub('_', ' ') %></label>
+                <input type="number" 
+                       name="adjustment[modifiers][<%= attr %>]" 
+                       id="adjustment_modifiers_<%= attr %>"
+                       value="<%= adjustment.modifier_for(attr).nonzero? %>" 
+                       class="modifier-input" 
+                       placeholder="0">
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="adjustment-modal-footer">
+        <button type="button" onclick="document.getElementById('adjustment-modal').close()" class="btn-cancel-adjustment">Cancel</button>
+        <%= form.submit adjustment.new_record? ? "Add Adjustment" : "Update Adjustment", class: "btn-add-adjustment" %>
+      </div>
     <% end %>
   </div>
-<% end %>
+</dialog>
+
+<button type="button" onclick="document.getElementById('adjustment-modal').showModal()" class="btn-open-adjustment-modal">
+  + Add Adjustment
+</button>
