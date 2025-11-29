@@ -1,0 +1,39 @@
+<div id="<%= dom_id(adjustment) %>" class="adjustment-card <%= adjustment.active? ? '' : 'adjustment-inactive' %>">
+  <div class="adjustment-card-header">
+    <div class="flex items-center gap-2">
+      <span class="adjustment-title"><%= adjustment.title %></span>
+      <% unless adjustment.active? %>
+        <span class="adjustment-badge-inactive">Inactive</span>
+      <% end %>
+    </div>
+    <div class="adjustment-actions">
+      <%= button_to toggle_hero_adjustment_path(adjustment.hero, adjustment), 
+          method: :patch, 
+          class: "adjustment-toggle-btn",
+          title: adjustment.active? ? "Deactivate" : "Activate" do %>
+        <%= adjustment.active? ? "⏸" : "▶" %>
+      <% end %>
+      <%= button_to hero_adjustment_path(adjustment.hero, adjustment), 
+          method: :delete, 
+          class: "adjustment-delete-btn",
+          title: "Remove",
+          data: { turbo_confirm: "Remove adjustment '#{adjustment.title}'?" } do %>
+        ×
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="adjustment-card-body">
+    <% if adjustment.active_modifiers.any? %>
+      <div class="adjustment-modifiers-list">
+        <% adjustment.active_modifiers.each do |attr, value| %>
+          <span class="adjustment-modifier-tag <%= value > 0 ? 'modifier-positive' : 'modifier-negative' %>">
+            <%= attr.titleize.gsub('_', ' ') %>: <%= value > 0 ? "+#{value}" : value %>
+          </span>
+        <% end %>
+      </div>
+    <% else %>
+      <span class="text-parchment-border italic text-sm">No modifiers set</span>
+    <% end %>
+  </div>
+</div>

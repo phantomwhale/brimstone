@@ -35,12 +35,6 @@
           <em>No keywords assigned</em>
         </div>
       </div>
-      <div class="info-box">
-        <h3 class="info-box-title">Modifiers for the Current Adventure...</h3>
-        <div class="min-h-[40px] text-center text-sm text-parchment-border italic">
-          <em>None</em>
-        </div>
-      </div>
     </aside>
 
     <%# Main Stats Area %>
@@ -51,25 +45,35 @@
         <section class="attributes-section flex-1">
           <div class="grid grid-cols-3 gap-4 mb-4">
             <% [
-              ['Agility', hero.agility],
-              ['Cunning', hero.cunning],
-              ['Spirit', hero.spirit]
-            ].each do |attr_name, value| %>
+              ['Agility', 'agility'],
+              ['Cunning', 'cunning'],
+              ['Spirit', 'spirit']
+            ].each do |attr_name, attr_key| %>
               <div class="flex flex-col items-center gap-2">
                 <span class="attribute-label"><%= attr_name %></span>
-                <div class="attribute-display"><%= value %></div>
+                <div class="attribute-display <%= adjustment_indicator_class(hero, attr_key) %>">
+                  <%= hero.adjusted_value_for(attr_key) %>
+                  <% if (adj = adjustment_amount(hero, attr_key)) %>
+                    <span class="adjustment-indicator"><%= adj %></span>
+                  <% end %>
+                </div>
               </div>
             <% end %>
           </div>
           <div class="grid grid-cols-3 gap-4">
             <% [
-              ['Strength', hero.strength],
-              ['Lore', hero.lore],
-              ['Luck', hero.luck]
-            ].each do |attr_name, value| %>
+              ['Strength', 'strength'],
+              ['Lore', 'lore'],
+              ['Luck', 'luck']
+            ].each do |attr_name, attr_key| %>
               <div class="flex flex-col items-center gap-2">
                 <span class="attribute-label"><%= attr_name %></span>
-                <div class="attribute-display"><%= value %></div>
+                <div class="attribute-display <%= adjustment_indicator_class(hero, attr_key) %>">
+                  <%= hero.adjusted_value_for(attr_key) %>
+                  <% if (adj = adjustment_amount(hero, attr_key)) %>
+                    <span class="adjustment-indicator"><%= adj %></span>
+                  <% end %>
+                </div>
               </div>
             <% end %>
           </div>
@@ -79,11 +83,21 @@
         <div class="flex flex-col gap-4">
           <div class="initiative-box">
             <span class="font-western text-xs text-parchment-light uppercase">Initiative</span>
-            <div class="initiative-display"><%= hero.initiative %></div>
+            <div class="initiative-display <%= adjustment_indicator_class(hero, 'initiative') %>">
+              <%= hero.adjusted_initiative %>
+              <% if (adj = adjustment_amount(hero, 'initiative')) %>
+                <span class="adjustment-indicator"><%= adj %></span>
+              <% end %>
+            </div>
           </div>
           <div class="corruption-box">
             <span class="font-western text-[10px] text-parchment-light uppercase text-center leading-tight">Corruption Resistance</span>
-            <div class="corruption-display"><%= hero.corrupt_resist %></div>
+            <div class="corruption-display <%= adjustment_indicator_class(hero, 'corrupt_resist') %>">
+              <%= hero.adjusted_corrupt_resist %>
+              <% if (adj = adjustment_amount(hero, 'corrupt_resist')) %>
+                <span class="adjustment-indicator"><%= adj %></span>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -96,22 +110,42 @@
             <div class="flex gap-6">
               <div class="flex flex-col items-center gap-2">
                 <span class="font-serif text-sm font-bold text-wood-dark">Ranged</span>
-                <div class="to-hit-display"><%= hero.range_to_hit %></div>
+                <div class="to-hit-display <%= adjustment_indicator_class(hero, 'range_to_hit') %>">
+                  <%= hero.adjusted_range_to_hit %>
+                  <% if (adj = adjustment_amount(hero, 'range_to_hit')) %>
+                    <span class="adjustment-indicator"><%= adj %></span>
+                  <% end %>
+                </div>
               </div>
               <div class="flex flex-col items-center gap-2">
                 <span class="font-serif text-sm font-bold text-wood-dark">Melee</span>
-                <div class="to-hit-display"><%= hero.melee_to_hit %></div>
+                <div class="to-hit-display <%= adjustment_indicator_class(hero, 'melee_to_hit') %>">
+                  <%= hero.adjusted_melee_to_hit %>
+                  <% if (adj = adjustment_amount(hero, 'melee_to_hit')) %>
+                    <span class="adjustment-indicator"><%= adj %></span>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
           <div class="flex flex-col gap-3">
             <div class="flex items-center gap-2 bg-parchment-light border-2 border-wood rounded-md px-3 py-2">
               <span class="font-serif text-sm font-bold text-wood-dark whitespace-nowrap">Combat:</span>
-              <div class="combat-display"><%= hero.combat %></div>
+              <div class="combat-display <%= adjustment_indicator_class(hero, 'combat') %>">
+                <%= hero.adjusted_combat %>
+                <% if (adj = adjustment_amount(hero, 'combat')) %>
+                  <span class="adjustment-indicator"><%= adj %></span>
+                <% end %>
+              </div>
             </div>
             <div class="flex items-center gap-2 bg-parchment-light border-2 border-wood rounded-md px-3 py-2">
               <span class="font-serif text-sm font-bold text-wood-dark whitespace-nowrap">Max Grit:</span>
-              <div class="combat-display"><%= hero.max_grit %></div>
+              <div class="combat-display <%= adjustment_indicator_class(hero, 'max_grit') %>">
+                <%= hero.adjusted_max_grit %>
+                <% if (adj = adjustment_amount(hero, 'max_grit')) %>
+                  <span class="adjustment-indicator"><%= adj %></span>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -124,10 +158,20 @@
             Health
           </div>
           <div class="flex items-center gap-4">
-            <div class="health-display"><%= hero.health %></div>
+            <div class="health-display <%= adjustment_indicator_class(hero, 'health') %>">
+              <%= hero.adjusted_health %>
+              <% if (adj = adjustment_amount(hero, 'health')) %>
+                <span class="adjustment-indicator"><%= adj %></span>
+              <% end %>
+            </div>
             <div class="flex flex-col items-center gap-1">
               <span class="font-serif text-xs text-parchment-light uppercase">Defense</span>
-              <div class="defense-display"><%= hero.defense %></div>
+              <div class="defense-display <%= adjustment_indicator_class(hero, 'defense') %>">
+                <%= hero.adjusted_defense %>
+                <% if (adj = adjustment_amount(hero, 'defense')) %>
+                  <span class="adjustment-indicator"><%= adj %></span>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -136,10 +180,20 @@
             Sanity
           </div>
           <div class="flex items-center gap-4">
-            <div class="sanity-display"><%= hero.sanity %></div>
+            <div class="sanity-display <%= adjustment_indicator_class(hero, 'sanity') %>">
+              <%= hero.adjusted_sanity %>
+              <% if (adj = adjustment_amount(hero, 'sanity')) %>
+                <span class="adjustment-indicator"><%= adj %></span>
+              <% end %>
+            </div>
             <div class="flex flex-col items-center gap-1">
               <span class="font-serif text-xs text-parchment-light uppercase">Willpower</span>
-              <div class="willpower-display"><%= hero.willpower %></div>
+              <div class="willpower-display <%= adjustment_indicator_class(hero, 'willpower') %>">
+                <%= hero.adjusted_willpower %>
+                <% if (adj = adjustment_amount(hero, 'willpower')) %>
+                  <span class="adjustment-indicator"><%= adj %></span>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -171,7 +225,12 @@
         <div class="flex items-center justify-between border-b-2 border-parchment-border pb-2 mb-4">
           <h3 class="font-western text-lg text-wood-dark">Side Bag</h3>
           <span class="font-serif text-sm text-wood-dark">
-            <%= hero.sidebag_count %> / <%= hero.sidebag_capacity || 5 %> tokens
+            <%= hero.sidebag_count %> / <%= hero.adjusted_sidebag_capacity %> tokens
+            <% if hero.has_adjustment_for?('sidebag_capacity') %>
+              <span class="text-xs <%= hero.total_adjustment_for('sidebag_capacity') > 0 ? 'text-green-700' : 'text-red-500' %>">
+                (<%= adjustment_amount(hero, 'sidebag_capacity') %>)
+              </span>
+            <% end %>
           </span>
         </div>
         
@@ -191,6 +250,32 @@
         <% end %>
       </section>
     </main>
+  </div>
+
+  <%# Adjustments Section %>
+  <div class="p-6 pt-0">
+    <section class="adjustments-section">
+      <div class="flex items-center justify-between border-b-2 border-parchment-border pb-2 mb-4">
+        <h3 class="font-western text-lg text-wood-dark">Active Adjustments</h3>
+        <span class="font-serif text-sm text-wood-dark">
+          <%= hero.adjustments.active.count %> active / <%= hero.adjustments.count %> total
+        </span>
+      </div>
+      
+      <div id="adjustments-list" class="adjustments-list mb-4">
+        <% if hero.adjustments.any? %>
+          <%= render hero.adjustments.order(active: :desc, created_at: :desc) %>
+        <% else %>
+          <div class="text-center text-parchment-border italic py-4">
+            No adjustments - add one below
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="adjustment-form-container">
+        <%= render "adjustments/form", hero: hero, adjustment: hero.adjustments.build %>
+      </div>
+    </section>
   </div>
 
   <%# Bottom Sections: Items & Abilities %>

@@ -1,0 +1,7 @@
+<%# Remove the adjustment from the list %>
+<%= turbo_stream.remove @adjustment %>
+
+<%# Update the hero stats to reflect the change %>
+<%= turbo_stream.replace dom_id(@hero) do %>
+  <%= render @hero %>
+<% end %>

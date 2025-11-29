@@ -1,0 +1,14 @@
+<%# Add the new adjustment to the list %>
+<%= turbo_stream.prepend "adjustments-list" do %>
+  <%= render @adjustment %>
+<% end %>
+
+<%# Reset the form %>
+<%= turbo_stream.replace "adjustment-form" do %>
+  <%= render "adjustments/form", hero: @hero, adjustment: @hero.adjustments.build %>
+<% end %>
+
+<%# Update the hero stats to reflect the change %>
+<%= turbo_stream.replace dom_id(@hero) do %>
+  <%= render @hero %>
+<% end %>

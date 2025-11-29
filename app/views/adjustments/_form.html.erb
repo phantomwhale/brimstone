@@ -1,0 +1,40 @@
+<%= form_with(model: [hero, adjustment], id: "adjustment-form", class: "adjustment-form") do |form| %>
+  <div class="adjustment-form-header">
+    <h4 class="font-western text-base text-wood-dark">
+      <%= adjustment.new_record? ? "Add New Adjustment" : "Edit Adjustment" %>
+    </h4>
+  </div>
+  
+  <div class="adjustment-form-body">
+    <div class="mb-4">
+      <%= form.label :title, "Title", class: "font-serif text-sm font-bold text-wood-dark block mb-1" %>
+      <%= form.text_field :title, class: "adjustment-title-input", placeholder: "e.g., Strength Potion, Cursed Ring" %>
+    </div>
+    
+    <div class="adjustment-modifiers-grid">
+      <% Adjustment::ADJUSTABLE_ATTRIBUTES.each do |attr| %>
+        <div class="adjustment-modifier-item">
+          <label for="adjustment_modifiers_<%= attr %>" class="modifier-label"><%= attr.titleize.gsub('_', ' ') %></label>
+          <input type="number" 
+                 name="adjustment[modifiers][<%= attr %>]" 
+                 id="adjustment_modifiers_<%= attr %>"
+                 value="<%= adjustment.modifier_for(attr).nonzero? %>" 
+                 class="modifier-input" 
+                 placeholder="0">
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="mt-4 flex items-center gap-2">
+      <%= form.check_box :active, class: "adjustment-active-checkbox" %>
+      <%= form.label :active, "Active", class: "font-serif text-sm text-wood-dark" %>
+    </div>
+  </div>
+  
+  <div class="adjustment-form-footer">
+    <%= form.submit adjustment.new_record? ? "Add Adjustment" : "Update Adjustment", class: "btn-add-adjustment" %>
+    <% unless adjustment.new_record? %>
+      <%= link_to "Cancel", hero_path(hero), class: "btn-cancel-adjustment" %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<%# Replace the adjustment card with updated state %>
+<%= turbo_stream.replace @adjustment do %>
+  <%= render @adjustment %>
+<% end %>
+
+<%# Update the hero stats to reflect the change %>
+<%= turbo_stream.replace dom_id(@hero) do %>
+  <%= render @hero %>
+<% end %>

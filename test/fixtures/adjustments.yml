@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hero: one
+  title: Strength Potion
+  active: true
+  modifiers: '{"strength": 2}'
+
+two:
+  hero: two
+  title: Cursed Amulet
+  active: false
+  modifiers: '{"agility": -1, "luck": 1}'
