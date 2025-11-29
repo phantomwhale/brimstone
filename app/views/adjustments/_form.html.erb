@@ -44,7 +44,7 @@
         <div class="adjustment-form-section">
           <h4 class="adjustment-group-title">Health & Sanity</h4>
           <div class="adjustment-modifiers-grid-grouped">
-            <% %w[health defense sanity willpower].each do |attr| %>
+            <% %w[health sanity].each do |attr| %>
               <div class="adjustment-modifier-item">
                 <label for="adjustment_modifiers_<%= attr %>" class="modifier-label"><%= attr.titleize %></label>
                 <input type="number" 
@@ -62,7 +62,7 @@
         <div class="adjustment-form-section">
           <h4 class="adjustment-group-title">Combat</h4>
           <div class="adjustment-modifiers-grid-grouped">
-            <% %w[range_to_hit melee_to_hit combat max_grit].each do |attr| %>
+            <% %w[combat max_grit].each do |attr| %>
               <div class="adjustment-modifier-item">
                 <label for="adjustment_modifiers_<%= attr %>" class="modifier-label"><%= attr.titleize.gsub('_', ' ') %></label>
                 <input type="number" 

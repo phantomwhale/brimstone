@@ -110,20 +110,14 @@
             <div class="flex gap-6">
               <div class="flex flex-col items-center gap-2">
                 <span class="font-serif text-sm font-bold text-wood-dark">Ranged</span>
-                <div class="to-hit-display <%= adjustment_indicator_class(hero, 'range_to_hit') %>">
-                  <%= hero.adjusted_range_to_hit %>
-                  <% if (adj = adjustment_amount(hero, 'range_to_hit')) %>
-                    <span class="adjustment-indicator"><%= adj %></span>
-                  <% end %>
+                <div class="to-hit-display">
+                  <%= format_dice_target(hero.range_to_hit) %>
                 </div>
               </div>
               <div class="flex flex-col items-center gap-2">
                 <span class="font-serif text-sm font-bold text-wood-dark">Melee</span>
-                <div class="to-hit-display <%= adjustment_indicator_class(hero, 'melee_to_hit') %>">
-                  <%= hero.adjusted_melee_to_hit %>
-                  <% if (adj = adjustment_amount(hero, 'melee_to_hit')) %>
-                    <span class="adjustment-indicator"><%= adj %></span>
-                  <% end %>
+                <div class="to-hit-display">
+                  <%= format_dice_target(hero.melee_to_hit) %>
                 </div>
               </div>
             </div>
@@ -166,11 +160,8 @@
             </div>
             <div class="flex flex-col items-center gap-1">
               <span class="font-serif text-xs text-parchment-light uppercase">Defense</span>
-              <div class="defense-display <%= adjustment_indicator_class(hero, 'defense') %>">
-                <%= hero.adjusted_defense %>
-                <% if (adj = adjustment_amount(hero, 'defense')) %>
-                  <span class="adjustment-indicator"><%= adj %></span>
-                <% end %>
+              <div class="defense-display">
+                <%= format_dice_target(hero.defense) %>
               </div>
             </div>
           </div>
@@ -188,11 +179,8 @@
             </div>
             <div class="flex flex-col items-center gap-1">
               <span class="font-serif text-xs text-parchment-light uppercase">Willpower</span>
-              <div class="willpower-display <%= adjustment_indicator_class(hero, 'willpower') %>">
-                <%= hero.adjusted_willpower %>
-                <% if (adj = adjustment_amount(hero, 'willpower')) %>
-                  <span class="adjustment-indicator"><%= adj %></span>
-                <% end %>
+              <div class="willpower-display">
+                <%= format_dice_target(hero.willpower) %>
               </div>
             </div>
           </div>

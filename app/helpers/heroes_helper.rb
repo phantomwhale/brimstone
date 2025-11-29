@@ -43,4 +43,11 @@ module HeroesHelper
       "Status Effects" => status_tokens
     }
   end
+  
+  # Format dice roll target values (e.g., 4 -> "4+", 5 -> "5+")
+  # These represent the minimum dice roll needed for success
+  def format_dice_target(value)
+    return "-" if value.blank? || value.to_i == 0
+    "#{value}+"
+  end
 end

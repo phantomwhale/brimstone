@@ -10,6 +10,8 @@ class Adjustment < ApplicationRecord
   scope :active, -> { where(active: true) }
   
   # List of attributes that can be modified by adjustments
+  # Note: range_to_hit, melee_to_hit, defense, and willpower are dice target values
+  # and should only be modified via the hero edit form, not adjustments
   ADJUSTABLE_ATTRIBUTES = %w[
     health
     sanity
@@ -20,12 +22,8 @@ class Adjustment < ApplicationRecord
     lore
     luck
     initiative
-    range_to_hit
-    melee_to_hit
     combat
     max_grit
-    defense
-    willpower
     corrupt_resist
     sidebag_capacity
   ].freeze
