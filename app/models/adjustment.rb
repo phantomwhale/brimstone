@@ -1,5 +1,6 @@
 class Adjustment < ApplicationRecord
   belongs_to :hero, class_name: "Hero", foreign_key: "hero_id"
+  belongs_to :item, optional: true
   
   # Modifiers are stored as a JSON hash of attribute => modifier value
   # e.g., { "strength" => 2, "agility" => -1 }
@@ -8,6 +9,17 @@ class Adjustment < ApplicationRecord
   validates :title, presence: true
   
   scope :active, -> { where(active: true) }
+  scope :standalone, -> { where(item_id: nil) }
+  scope :from_items, -> { where.not(item_id: nil) }
+  
+  # An adjustment is effectively active if:
+  # - It's marked as active AND
+  # - Either it's standalone (no item) OR its item is equipped
+  def effectively_active?
+    return false unless active?
+    return true if item.nil?
+    item.equipped?
+  end
   
   # List of attributes that can be modified by adjustments
   # Note: range_to_hit, melee_to_hit, defense, and willpower are dice target values
@@ -45,9 +57,9 @@ class Adjustment < ApplicationRecord
     end
   end
   
-  # Returns only non-zero modifiers
+  # Returns only non-zero modifiers (with integer values)
   def active_modifiers
-    (modifiers || {}).reject { |_, v| v.to_i == 0 }
+    (modifiers || {}).transform_values(&:to_i).reject { |_, v| v == 0 }
   end
   
   private

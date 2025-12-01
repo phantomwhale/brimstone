@@ -1,0 +1,121 @@
+<dialog id="item-modal" class="item-modal">
+  <div class="item-modal-content">
+    <div class="item-modal-header">
+      <h3 class="font-western text-lg text-gold">
+        <%= item.new_record? ? "Add New Item" : "Edit Item" %>
+      </h3>
+      <button type="button" onclick="document.getElementById('item-modal').close()" class="item-modal-close">&times;</button>
+    </div>
+    
+    <%= form_with(model: [hero, item], id: "item-form", class: "item-modal-form") do |form| %>
+      <div class="item-modal-body">
+        <%# Name and Description %>
+        <div class="item-form-section">
+          <div class="mb-4">
+            <%= form.label :name, "Item Name", class: "font-serif text-sm font-bold text-wood-dark block mb-1" %>
+            <%= form.text_field :name, class: "item-name-input", placeholder: "e.g., Revolver, Leather Duster, Bandolier" %>
+          </div>
+          
+          <div>
+            <%= form.label :description, "Description (optional)", class: "font-serif text-sm font-bold text-wood-dark block mb-1" %>
+            <%= form.text_area :description, class: "item-description-input", rows: 2, placeholder: "What does this item do?" %>
+          </div>
+        </div>
+        
+        <%# Weight (Anvils) %>
+        <div class="item-form-section">
+          <h4 class="item-group-title">Weight</h4>
+          <div class="flex items-center gap-3">
+            <%= form.label :weight, "Anvils:", class: "font-serif text-sm text-wood-dark" %>
+            <%= form.number_field :weight, class: "item-weight-input", min: 0, max: 10, value: item.weight || 0 %>
+            <span class="text-sm text-parchment-border italic">(How heavy is this item?)</span>
+          </div>
+        </div>
+        
+        <%# Equipment - Body Parts %>
+        <div class="item-form-section">
+          <h4 class="item-group-title">Equipment Slots (Body)</h4>
+          <p class="text-sm text-parchment-border mb-3">Select body parts required to equip this item (if any)</p>
+          <div class="item-body-parts-grid">
+            <% Item::BODY_PARTS.each do |part| %>
+              <label class="item-body-part-option">
+                <%= check_box_tag "item[body_parts][]", part, item.body_parts_array.include?(part), id: "item_body_parts_#{part}" %>
+                <span class="item-body-part-label"><%= part.titleize %></span>
+              </label>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# Equipment - Hands %>
+        <div class="item-form-section">
+          <h4 class="item-group-title">Hands Required</h4>
+          <p class="text-sm text-parchment-border mb-3">How many hands are needed to use this item?</p>
+          <div class="item-hands-options">
+            <% [0, 1, 2, 3].each do |num| %>
+              <label class="item-hands-option">
+                <%= form.radio_button :hands_required, num, class: "item-hands-radio" %>
+                <span class="item-hands-label">
+                  <% if num == 0 %>
+                    None
+                  <% else %>
+                    <%= num %> <%= num == 1 ? "hand" : "hands" %>
+                  <% end %>
+                </span>
+              </label>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# Stat Modifiers (when equipped) %>
+        <div class="item-form-section">
+          <h4 class="item-group-title">Stat Modifiers (when equipped)</h4>
+          <p class="text-sm text-parchment-border mb-3">Bonuses or penalties this item provides when equipped</p>
+          
+          <% adj = item.adjustment_for_form %>
+          <%= form.fields_for :adjustment_attributes, adj do |adj_form| %>
+            <%= adj_form.hidden_field :hero_id, value: hero.id %>
+            <%= adj_form.hidden_field :title, value: item.name.presence || "Item" %>
+            <%= adj_form.hidden_field :active, value: true %>
+            
+            <div class="item-modifiers-grid">
+              <% %w[agility cunning spirit strength lore luck].each do |attr| %>
+                <div class="item-modifier-item">
+                  <label for="item_adjustment_attributes_modifiers_<%= attr %>" class="modifier-label text-xs"><%= attr.titleize %></label>
+                  <input type="number" 
+                         name="item[adjustment_attributes][modifiers][<%= attr %>]" 
+                         id="item_adjustment_attributes_modifiers_<%= attr %>"
+                         value="<%= adj.modifier_for(attr).nonzero? %>" 
+                         class="modifier-input" 
+                         placeholder="0">
+                </div>
+              <% end %>
+            </div>
+            
+            <div class="item-modifiers-grid mt-2">
+              <% %w[health sanity combat max_grit initiative corrupt_resist].each do |attr| %>
+                <div class="item-modifier-item">
+                  <label for="item_adjustment_attributes_modifiers_<%= attr %>" class="modifier-label text-xs"><%= attr.titleize.gsub('_', ' ') %></label>
+                  <input type="number" 
+                         name="item[adjustment_attributes][modifiers][<%= attr %>]" 
+                         id="item_adjustment_attributes_modifiers_<%= attr %>"
+                         value="<%= adj.modifier_for(attr).nonzero? %>" 
+                         class="modifier-input" 
+                         placeholder="0">
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="item-modal-footer">
+        <button type="button" onclick="document.getElementById('item-modal').close()" class="btn-cancel-item">Cancel</button>
+        <%= form.submit item.new_record? ? "Add Item" : "Update Item", class: "btn-add-item" %>
+      </div>
+    <% end %>
+  </div>
+</dialog>
+
+<button type="button" onclick="document.getElementById('item-modal').showModal()" class="btn-open-item-modal">
+  + Add Item
+</button>

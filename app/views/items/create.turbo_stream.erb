@@ -1,0 +1,4 @@
+<%# Update the entire hero (includes stats, items list, and form) %>
+<%= turbo_stream.replace dom_id(@hero) do %>
+  <%= render @hero %>
+<% end %>

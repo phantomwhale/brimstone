@@ -1,0 +1,4 @@
+<%# Update the entire hero to refresh weight capacity display %>
+<%= turbo_stream.replace dom_id(@hero) do %>
+  <%= render @hero %>
+<% end %>

@@ -5,6 +5,15 @@ Rails.application.routes.draw do
         patch :toggle
       end
     end
+    
+    resources :items, only: [:create, :edit, :update, :destroy] do
+      member do
+        patch :equip
+        patch :unequip
+      end
+    end
+    
+    resources :sidebag_tokens, only: [:create, :destroy]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

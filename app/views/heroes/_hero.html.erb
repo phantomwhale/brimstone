@@ -212,22 +212,35 @@
       <section class="sidebag-section-display">
         <div class="flex items-center justify-between border-b-2 border-parchment-border pb-2 mb-4">
           <h3 class="font-western text-lg text-wood-dark">Side Bag</h3>
-          <span class="font-serif text-sm text-wood-dark">
-            <%= hero.sidebag_count %> / <%= hero.adjusted_sidebag_capacity %> tokens
-            <% if hero.has_adjustment_for?('sidebag_capacity') %>
-              <span class="text-xs <%= hero.total_adjustment_for('sidebag_capacity') > 0 ? 'text-green-700' : 'text-red-500' %>">
-                (<%= adjustment_amount(hero, 'sidebag_capacity') %>)
-              </span>
+          <div class="flex items-center gap-3">
+            <span class="font-serif text-sm text-wood-dark">
+              <%= hero.sidebag_count %> / <%= hero.adjusted_sidebag_capacity %> tokens
+              <% if hero.has_adjustment_for?('sidebag_capacity') %>
+                <span class="text-xs <%= hero.total_adjustment_for('sidebag_capacity') > 0 ? 'text-green-700' : 'text-red-500' %>">
+                  (<%= adjustment_amount(hero, 'sidebag_capacity') %>)
+                </span>
+              <% end %>
+            </span>
+            <% unless hero.sidebag_full? %>
+              <button type="button" onclick="document.getElementById('token-picker-modal-<%= hero.id %>').showModal()" class="btn-add-token">
+                + Add Token
+              </button>
             <% end %>
-          </span>
+          </div>
         </div>
         
         <% if hero.sidebag_tokens.any? %>
           <div class="sidebag-tokens-display">
-            <% hero.sidebag_tokens.each do |token| %>
-              <div class="sidebag-token-display" title="<%= token_display_name(token) %>">
-                <%= image_tag "tokens/sidebag/#{token}.png", alt: token_display_name(token), class: "sidebag-token-image-display" %>
-                <span class="sidebag-token-name-display"><%= token_display_name(token) %></span>
+            <% hero.sidebag_tokens.each_with_index do |token, index| %>
+              <div class="sidebag-token" title="<%= token_display_name(token) %>">
+                <%= image_tag "tokens/sidebag/#{token}.png", alt: token_display_name(token), class: "sidebag-token-image" %>
+                <span class="sidebag-token-name"><%= token_display_name(token) %></span>
+                <%= button_to hero_sidebag_token_path(hero, index), 
+                    method: :delete, 
+                    class: "sidebag-token-remove",
+                    title: "Remove token" do %>
+                  &times;
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -237,22 +250,51 @@
           </div>
         <% end %>
       </section>
+      
+      <%# Token Picker Modal %>
+      <dialog id="token-picker-modal-<%= hero.id %>" class="token-picker-modal">
+        <div class="token-picker-content">
+          <div class="token-picker-header">
+            <h2 class="font-western text-xl text-gold">Add Token to Side Bag</h2>
+            <button type="button" onclick="document.getElementById('token-picker-modal-<%= hero.id %>').close()" class="token-picker-close">&times;</button>
+          </div>
+          <div class="token-picker-body">
+            <% grouped_sidebag_tokens.each do |category, tokens| %>
+              <div class="token-category">
+                <h3 class="token-category-title"><%= category %></h3>
+                <div class="token-picker-grid">
+                  <% tokens.each do |token| %>
+                    <%= button_to hero_sidebag_tokens_path(hero, token: token), 
+                        method: :post,
+                        class: "token-option",
+                        form: { data: { turbo_frame: "_top" } } do %>
+                      <%= image_tag "tokens/sidebag/#{token}.png", alt: token_display_name(token), class: "token-thumbnail" %>
+                      <span class="token-option-name"><%= token_display_name(token) %></span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </dialog>
     </main>
   </div>
 
   <%# Adjustments Section %>
   <div class="p-6 pt-0">
     <section class="adjustments-section">
+      <% standalone_adjustments = hero.adjustments.standalone %>
       <div class="flex items-center justify-between border-b-2 border-parchment-border pb-2 mb-4">
         <h3 class="font-western text-lg text-wood-dark">Adjustments</h3>
         <span class="font-serif text-sm text-wood-dark">
-          <%= hero.adjustments.active.count %> active / <%= hero.adjustments.count %> total
+          <%= standalone_adjustments.active.count %> active / <%= standalone_adjustments.count %> total
         </span>
       </div>
       
       <div id="adjustments-list" class="adjustments-list">
-        <% if hero.adjustments.any? %>
-          <%= render hero.adjustments.order(active: :desc, created_at: :desc) %>
+        <% if standalone_adjustments.any? %>
+          <%= render standalone_adjustments.order(active: :desc, created_at: :desc) %>
         <% else %>
           <div class="text-center text-parchment-border italic py-4" id="no-adjustments-message">
             No adjustments yet
@@ -266,16 +308,63 @@
     </section>
   </div>
 
-  <%# Bottom Sections: Items & Abilities %>
-  <div class="p-6 pt-0 grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div class="info-box">
-      <h3 class="font-western text-lg text-wood-dark text-center border-b-2 border-parchment-border pb-2 mb-4">Items</h3>
-      <div class="text-sm text-parchment-border mb-2 text-center">Personal Items / Upgrades / Clothing</div>
-      <div class="bg-white/50 border border-parchment-border rounded p-3 min-h-[80px]">
-        <div class="text-sm text-parchment-border italic text-center">No items assigned</div>
+  <%# Items Section %>
+  <div class="p-6 pt-0">
+    <section class="items-section">
+      <div class="flex items-center justify-between border-b-2 border-parchment-border pb-2 mb-4">
+        <h3 class="font-western text-lg text-wood-dark">Items</h3>
+        <div class="flex items-center gap-4">
+          <%# Weight capacity display %>
+          <div class="items-capacity-display <%= hero.over_weight_capacity? ? 'items-over-capacity' : '' %>">
+            <span class="items-capacity-label">Carrying:</span>
+            <span class="items-capacity-value">
+              <%= hero.total_item_weight > 0 ? anvil_icons(hero.total_item_weight) : '0' %>
+            </span>
+            <span class="items-capacity-separator">/</span>
+            <span class="items-capacity-max"><%= hero.weight_capacity %></span>
+            <% if hero.over_weight_capacity? %>
+              <span class="items-over-capacity-warning" title="Over capacity! Hero is encumbered."><i class="fa-solid fa-triangle-exclamation"></i></span>
+            <% end %>
+          </div>
+          <%# Hands display %>
+          <div class="items-hands-display">
+            <span class="items-hands-label">Hands:</span>
+            <span class="items-hands-value"><%= hero.free_hands %>/<%= hero.total_hands %></span>
+          </div>
+        </div>
       </div>
-    </div>
+      
+      <% if hero.over_weight_capacity? %>
+        <div class="items-encumbered-warning">
+          <strong>Encumbered!</strong> This hero is carrying <%= hero.total_item_weight - hero.weight_capacity %> anvil<%= (hero.total_item_weight - hero.weight_capacity) == 1 ? '' : 's' %> more than their capacity allows.
+          They may suffer penalties until items are dropped.
+        </div>
+      <% end %>
+      
+      <div id="items-list" class="items-list">
+        <% if hero.items.any? %>
+          <%# Show equipped items first, then unequipped %>
+          <% hero.items.equipped.order(:name).each do |item| %>
+            <%= render item %>
+          <% end %>
+          <% hero.items.unequipped.order(:name).each do |item| %>
+            <%= render item %>
+          <% end %>
+        <% else %>
+          <div class="text-center text-parchment-border italic py-4" id="no-items-message">
+            No items yet
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="mt-4" id="item-form-container">
+        <%= render "items/form", hero: hero, item: hero.items.build %>
+      </div>
+    </section>
+  </div>
 
+  <%# Bottom Sections: Abilities %>
+  <div class="p-6 pt-0">
     <div class="info-box">
       <h3 class="font-western text-lg text-wood-dark text-center border-b-2 border-parchment-border pb-2 mb-4">Abilities</h3>
       <div class="text-sm text-parchment-border mb-2 text-center">Starting Upgrades</div>

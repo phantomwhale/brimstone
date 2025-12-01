@@ -1,0 +1,83 @@
+<div id="<%= dom_id(item) %>" class="item-card <%= item.equipped? ? 'item-equipped' : '' %>">
+  <div class="item-card-header">
+    <div class="flex items-center gap-2">
+      <span class="item-name"><%= item.name %></span>
+      <% if item.equipped? %>
+        <span class="item-badge-equipped">Equipped</span>
+      <% end %>
+      <% if item.weight.to_i > 0 %>
+        <span class="item-weight-badge" title="<%= item.weight %> anvil<%= item.weight == 1 ? '' : 's' %>">
+          <%= anvil_icons(item.weight) %>
+        </span>
+      <% end %>
+    </div>
+    <div class="item-actions">
+      <% if item.equippable? %>
+        <% if item.equipped? %>
+          <%= button_to unequip_hero_item_path(item.hero, item), 
+              method: :patch, 
+              class: "item-unequip-btn",
+              title: "Unequip" do %>
+            &#x2193;
+          <% end %>
+        <% else %>
+          <% if item.can_equip? %>
+            <%= button_to equip_hero_item_path(item.hero, item), 
+                method: :patch, 
+                class: "item-equip-btn",
+                title: "Equip" do %>
+              &#x2191;
+            <% end %>
+          <% else %>
+            <span class="item-cannot-equip" title="<%= item.cannot_equip_reason %>">&#x26A0;</span>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= link_to edit_hero_item_path(item.hero, item),
+          class: "item-edit-btn",
+          title: "Edit",
+          data: { turbo_stream: true } do %>
+        &#x270E;
+      <% end %>
+      <%= button_to hero_item_path(item.hero, item), 
+          method: :delete, 
+          class: "item-delete-btn",
+          title: "Remove",
+          data: { turbo_confirm: "Remove item '#{item.name}'?" } do %>
+        &times;
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="item-card-body">
+    <% if item.description.present? %>
+      <p class="item-description"><%= item.description %></p>
+    <% end %>
+    
+    <div class="item-requirements">
+      <% if item.requires_body_parts? %>
+        <span class="item-requirement">
+          <strong>Body:</strong> <%= item.body_parts_array.map(&:titleize).join(', ') %>
+        </span>
+      <% end %>
+      <% if item.requires_hands? %>
+        <span class="item-requirement">
+          <strong>Hands:</strong> <%= item.hands_required %>
+        </span>
+      <% end %>
+    </div>
+    
+    <% if item.has_modifiers? %>
+      <div class="item-modifiers <%= item.equipped? ? 'item-modifiers-active' : 'item-modifiers-inactive' %>">
+        <% item.adjustment.active_modifiers.each do |attr, value| %>
+          <span class="item-modifier <%= value > 0 ? 'item-modifier-positive' : 'item-modifier-negative' %>">
+            <%= attr.titleize.gsub('_', ' ') %> <%= value > 0 ? '+' : '' %><%= value %>
+          </span>
+        <% end %>
+        <% unless item.equipped? %>
+          <span class="item-modifiers-note">(when equipped)</span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
