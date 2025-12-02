@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     end
     
     resources :sidebag_tokens, only: [:create, :destroy]
+    resources :injuries, only: [:create, :destroy]
+    resources :madnesses, only: [:create, :destroy]
+    resources :mutations, only: [:create, :destroy]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

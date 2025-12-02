@@ -1,0 +1,33 @@
+<div id="<%= dom_id(mutation) %>" class="affliction-card affliction-mutation">
+  <div class="affliction-header">
+    <div class="affliction-info">
+      <span class="affliction-name"><%= mutation.name %></span>
+      <% if mutation.roll.present? %>
+        <span class="affliction-roll">(Roll: <%= mutation.roll %>)</span>
+      <% end %>
+    </div>
+    <div class="affliction-actions">
+      <%= button_to hero_mutation_path(mutation.hero, mutation), 
+          method: :delete, 
+          class: "affliction-remove-btn",
+          title: "Remove mutation",
+          data: { turbo_confirm: "Remove mutation '#{mutation.name}'?" } do %>
+        &times;
+      <% end %>
+    </div>
+  </div>
+  
+  <% if mutation.description.present? %>
+    <p class="affliction-description"><%= mutation.description %></p>
+  <% end %>
+  
+  <% if mutation.has_modifiers? %>
+    <div class="affliction-modifiers">
+      <% mutation.active_modifiers.each do |attr, value| %>
+        <span class="affliction-modifier <%= value > 0 ? 'modifier-positive' : 'modifier-negative' %>">
+          <%= attr.titleize.gsub('_', ' ') %> <%= value > 0 ? '+' : '' %><%= value %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+</div>

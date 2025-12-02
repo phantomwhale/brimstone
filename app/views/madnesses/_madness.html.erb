@@ -1,0 +1,38 @@
+<div id="<%= dom_id(madness) %>" class="affliction-card affliction-madness">
+  <div class="affliction-header">
+    <div class="affliction-info">
+      <span class="affliction-name"><%= madness.name %></span>
+      <% if madness.roll.present? %>
+        <span class="affliction-roll">(Roll: <%= madness.roll %>)</span>
+      <% end %>
+      <% if madness.permanent? %>
+        <span class="affliction-badge-permanent">Permanent</span>
+      <% end %>
+    </div>
+    <div class="affliction-actions">
+      <% unless madness.permanent? %>
+        <%= button_to hero_madness_path(madness.hero, madness), 
+            method: :delete, 
+            class: "affliction-remove-btn",
+            title: "Remove madness",
+            data: { turbo_confirm: "Remove madness '#{madness.name}'?" } do %>
+          &times;
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  
+  <% if madness.description.present? %>
+    <p class="affliction-description"><%= madness.description %></p>
+  <% end %>
+  
+  <% if madness.has_modifiers? %>
+    <div class="affliction-modifiers">
+      <% madness.active_modifiers.each do |attr, value| %>
+        <span class="affliction-modifier <%= value > 0 ? 'modifier-positive' : 'modifier-negative' %>">
+          <%= attr.titleize.gsub('_', ' ') %> <%= value > 0 ? '+' : '' %><%= value %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+</div>

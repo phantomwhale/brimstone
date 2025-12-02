@@ -1,0 +1,59 @@
+# Shadows of Brimstone Madness Chart
+# Roll 2D6 when recovering from KO'd with 0 Sanity
+# Results 1-2 (Lost to the Darkness - Dead) and 11 (Get a Grip! - no effect) are excluded
+
+delusions:
+  roll: 3
+  name: "Delusions"
+  description: "Your fractured state of mind is in shambles, and you are ready to slip over the edge at any moment. Any further Madness Chart rolls are only made on a single D6. This Madness is -1 to the roll to Heal during an Exorcism of Madness at the Church in Town."
+  modifiers: {}
+
+the_itching:
+  roll: 4
+  name: "The Itching"
+  description: "Your skin burns and itches as you scratch at it feverishly. Why isn't anyone else scratching?!? At the start of each turn, you take 1 Hit, as you claw at your skin."
+  modifiers: {}
+
+its_coming_for_you:
+  roll: 5
+  name: "It's Coming for You!"
+  description: "How does it know your name?!? You can hear it calling you in the dark! What does it want? Whenever the Hold back the Darkness roll is failed (including doubles that would fail), you take D3 Sanity Damage, ignoring Willpower saves."
+  modifiers: {}
+
+paranoia:
+  roll: 6
+  name: "Paranoia"
+  description: "They're out to get you... all of them! Just look at that little one, with the beady eyes! They want to kill you... and take your stuff for themselves! Maybe they're all demons... they're all possessed!!! Anytime you want to Scavenge or Explore a Doorway, you must first roll a D6. On the roll of 1, 2, or 3 you cannot, as you are too distracted keeping an eye on the other 'Heroes' with you."
+  modifiers: {}
+
+open_to_the_void:
+  roll: 7
+  name: "Open to the Void"
+  description: "You feel the ebb and flow of the Void energy all around you, seeping into your mind and clawing at your deepest fears! You no longer get a Willpower save to prevent Corruption Hits."
+  modifiers: {}
+
+the_chills:
+  roll: 8
+  name: "The Chills"
+  description: "It's...soooo...cooollddd in here! It feels like you are freezing...on the inside! When Scavenging, ignore the first 6 you roll on the Scavenge test."
+  modifiers: {}
+
+hallucinations:
+  roll: 9
+  name: "Hallucinations"
+  description: "You can no longer trust what you see as shadows and tendrils of darkness writhe in every corner of your eye. Any time you would draw a Loot card, roll a D6. On the roll of 1, you instead take 1 Sanity Damage, ignoring Willpower, as you recoil from the hideous visions!"
+  modifiers: {}
+
+hearing_voices:
+  roll: 10
+  name: "Hearing Voices"
+  description: "They're telling you to kill...again! Any time you end your Move adjacent to another Hero, roll a D6. On the roll of 1 or 2, that Hero takes 3 Hits as you lash out at them!"
+  modifiers: {}
+
+ive_seen_things:
+  roll: 12
+  name: "I've Seen Things...!"
+  description: "You've come back from the brink of madness... and you are stronger for it! You are +1 Max Grit. This Madness can never be lost or removed."
+  modifiers:
+    max_grit: 1
+  permanent: true

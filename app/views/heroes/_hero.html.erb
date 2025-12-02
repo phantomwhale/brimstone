@@ -376,17 +376,71 @@
 
   <%# Injuries/Madness/Mutations Section %>
   <div class="p-6 pt-0 grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div class="injuries-section">
-      <h3 class="font-western text-lg text-parchment-light text-center border-b-2 border-health-border pb-2 mb-4">Injuries / Madness</h3>
-      <div class="bg-parchment-light/20 border border-health-border rounded p-3 min-h-[60px]">
-        <div class="text-sm text-parchment-light/70 italic text-center">No injuries or madness</div>
+    <%# Injuries Section %>
+    <div class="afflictions-section afflictions-injuries">
+      <div class="flex items-center justify-between border-b-2 border-health-border pb-2 mb-4">
+        <h3 class="font-western text-lg text-health">Injuries</h3>
+        <span class="font-serif text-sm text-health"><%= hero.injuries.count %> total</span>
+      </div>
+      
+      <% if hero.injuries.any? %>
+        <div class="afflictions-list">
+          <%= render hero.injuries.order(:created_at) %>
+        </div>
+      <% else %>
+        <div class="text-center text-parchment-border italic py-4">
+          No injuries
+        </div>
+      <% end %>
+      
+      <div class="mt-4">
+        <%= render "injuries/form", hero: hero %>
       </div>
     </div>
 
-    <div class="mutations-section">
-      <h3 class="font-western text-lg text-parchment-light text-center border-b-2 border-purple-800 pb-2 mb-4">Mutations</h3>
-      <div class="bg-parchment-light/20 border border-purple-800 rounded p-3 min-h-[60px]">
-        <div class="text-sm text-parchment-light/70 italic text-center">No mutations</div>
+    <%# Madness Section %>
+    <div class="afflictions-section afflictions-madness">
+      <div class="flex items-center justify-between border-b-2 border-sanity-border pb-2 mb-4">
+        <h3 class="font-western text-lg text-sanity">Madness</h3>
+        <span class="font-serif text-sm text-sanity"><%= hero.madnesses.count %> total</span>
+      </div>
+      
+      <% if hero.madnesses.any? %>
+        <div class="afflictions-list">
+          <%= render hero.madnesses.order(:created_at) %>
+        </div>
+      <% else %>
+        <div class="text-center text-parchment-border italic py-4">
+          No madness
+        </div>
+      <% end %>
+      
+      <div class="mt-4">
+        <%= render "madnesses/form", hero: hero %>
+      </div>
+    </div>
+  </div>
+  
+  <%# Mutations Section %>
+  <div class="p-6 pt-0">
+    <div class="afflictions-section afflictions-mutations">
+      <div class="flex items-center justify-between border-b-2 border-mutation-border pb-2 mb-4">
+        <h3 class="font-western text-lg text-mutation">Mutations</h3>
+        <span class="font-serif text-sm text-mutation"><%= hero.mutations.count %> total</span>
+      </div>
+      
+      <% if hero.mutations.any? %>
+        <div class="afflictions-list">
+          <%= render hero.mutations.order(:created_at) %>
+        </div>
+      <% else %>
+        <div class="text-center text-parchment-border italic py-4">
+          No mutations
+        </div>
+      <% end %>
+      
+      <div class="mt-4">
+        <%= render "mutations/form", hero: hero %>
       </div>
     </div>
   </div>

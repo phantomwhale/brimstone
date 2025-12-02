@@ -1,0 +1,51 @@
+<%# Add Mutation Form - Select from chart or custom %>
+<button type="button" onclick="document.getElementById('mutation-modal-<%= hero.id %>').showModal()" class="btn-add-affliction btn-add-mutation">
+  + Add Mutation
+</button>
+
+<dialog id="mutation-modal-<%= hero.id %>" class="affliction-modal affliction-modal-mutation">
+  <div class="affliction-modal-content">
+    <div class="affliction-modal-header affliction-modal-header-mutation">
+      <h2 class="font-western text-xl text-gold">Add Mutation</h2>
+      <button type="button" onclick="document.getElementById('mutation-modal-<%= hero.id %>').close()" class="affliction-modal-close">&times;</button>
+    </div>
+    
+    <div class="affliction-modal-body">
+      <div class="affliction-section">
+        <h3 class="affliction-section-title">From Mutation Chart (D36)</h3>
+        <div class="mutation-chart-grid">
+          <% Mutations.all.sort_by { |k, v| v['roll'] }.each do |key, data| %>
+            <%= button_to hero_mutations_path(hero, mutation_key: key), 
+                method: :post,
+                class: "affliction-chart-option mutation-chart-option",
+                form: { data: { turbo_frame: "_top" } } do %>
+              <span class="affliction-chart-roll"><%= data['roll'] %></span>
+              <span class="affliction-chart-name"><%= data['name'] %></span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="affliction-divider">
+        <span>or</span>
+      </div>
+      
+      <div class="affliction-section">
+        <h3 class="affliction-section-title">Custom Mutation</h3>
+        <%= form_with url: hero_mutations_path(hero), method: :post, class: "affliction-custom-form" do |f| %>
+          <div class="affliction-form-group">
+            <label class="affliction-form-label">Name</label>
+            <input type="text" name="mutation[name]" class="affliction-form-input" placeholder="Mutation name..." required>
+          </div>
+          <div class="affliction-form-group">
+            <label class="affliction-form-label">Description (optional)</label>
+            <textarea name="mutation[description]" class="affliction-form-textarea" placeholder="Describe the mutation effects..."></textarea>
+          </div>
+          <div class="affliction-form-actions">
+            <button type="submit" class="btn-add-affliction btn-add-mutation">Add Custom Mutation</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</dialog>

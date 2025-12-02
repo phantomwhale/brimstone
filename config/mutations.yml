@@ -1,0 +1,232 @@
+# Shadows of Brimstone Mutation Chart
+# Roll D36 (two dice of different colors - one is 10s digit, one is 1s digit)
+# e.g., rolling 3 and 5 = 35
+
+chest_portal:
+  roll: 11
+  name: "Chest Portal"
+  description: "A hole has opened up in your chest leading to another dimension! And occasionally... stuff comes through! Anytime an 11 or 12 is rolled to Hold Back the Darkness, you must roll a D6. On 1, 2, or 3, there is an Ambush Attack! as a Low Threat card erupts from the portal in your chest. These Enemies are all placed adjacent to you if possible, but will select targets during their first Activation. On 4 or 5, nothing happens. On 6, something starts itching in your portal and you reach in only to pull out a foreign object. Draw an Artifact card from the Mines."
+  modifiers: {}
+
+tentacle_fingers:
+  roll: 12
+  name: "Tentacle Fingers"
+  description: "Gross! No game effect."
+  modifiers: {}
+
+tentacle_arm:
+  roll: 13
+  name: "Tentacle Arm"
+  description: "You lose the use of one Hand each turn, but you are +1 Combat. Guns may still be used, but cannot get Critical Hits."
+  modifiers:
+    combat: 1
+    total_hands: -1
+
+tentacle_leg:
+  roll: 14
+  name: "Tentacle Leg"
+  description: "You are -1 Move each turn (minimum of 1)."
+  modifiers:
+    move: -1
+
+tentacle_tongue:
+  roll: 15
+  name: "Tentacle Tongue"
+  description: "Gross! No game effect."
+  modifiers: {}
+
+tentacle_mustache:
+  roll: 16
+  name: "Tentacle Mustache"
+  description: "Shopkeepers are intimidated by your writhing facial hair! All Item prices in Town cost you $10 less than normal (minimum $10)."
+  modifiers: {}
+
+glowing_skin:
+  roll: 21
+  name: "Glowing Skin"
+  description: "Your skin begins to give off an eerie green glow that lights up the corridors around you. You are now Immune to Voices in the Dark, but Enemies also Hit you on 'To Hit' rolls of 1."
+  modifiers: {}
+
+rock_skin:
+  roll: 22
+  name: "Rock Skin"
+  description: "Your skin becomes hard and crusty, like it's made of rock. You are +3 Health, but -1 Move each turn (minimum of 1)."
+  modifiers:
+    health: 3
+    move: -1
+
+slippery_skin:
+  roll: 23
+  name: "Slippery Skin"
+  description: "Your skin is now oily and greasy, allowing you to slide past Enemies and slip through tight spaces. You may now roll an extra die for Escape tests and choose which roll to use."
+  modifiers: {}
+
+melty_skin:
+  roll: 24
+  name: "Melty Skin"
+  description: "Your skin has become gooey and comes off easily now. Any time you take one or more Wounds from a source, you take 1 extra Wound."
+  modifiers: {}
+
+void_boils:
+  roll: 25
+  name: "Void Boils"
+  description: "You are -2 Health, but +1 Max Grit."
+  modifiers:
+    health: -2
+    max_grit: 1
+
+void_infection:
+  roll: 26
+  name: "Void Infection"
+  description: "Any time you pass through a Gate, you take 1 Corruption Point, ignoring Willpower."
+  modifiers: {}
+
+barbed_tail:
+  roll: 31
+  name: "Barbed Tail"
+  description: "+1 Combat. You can now hold 1 fewer Corruption Point before you get a Mutation."
+  modifiers:
+    combat: 1
+
+prehensile_tail:
+  roll: 32
+  name: "Prehensile Tail"
+  description: "You now have 1 extra Hand to use per turn. You can now hold 1 fewer Corruption Point before you get a Mutation."
+  modifiers:
+    total_hands: 1
+
+tail_with_a_face:
+  roll: 33
+  name: "Tail with a Face"
+  description: "Your tail talks to you in hushed demonic whispers, curling around to speak into your ear. Any time you take one or more Sanity Damage from a source, you take 1 extra Sanity Damage."
+  modifiers: {}
+
+tail_with_a_mouth:
+  roll: 34
+  name: "Tail with a Mouth"
+  description: "Your tail nips and bites at you and any others that stray too close. Any time you or another model adjacent to you rolls a 1 on a 'To Hit' roll, that model takes 1 Wound, ignoring Defense. No XP is gained."
+  modifiers: {}
+
+tentacle_tail:
+  roll: 35
+  name: "Tentacle Tail"
+  description: "+1 Move. You can now hold 1 fewer Corruption Point before you get a Mutation."
+  modifiers:
+    move: 1
+
+void_plague:
+  roll: 36
+  name: "Void Plague"
+  description: "Any Hero adjacent to you at the end of a turn automatically takes D3 Wounds, ignoring Defense."
+  modifiers: {}
+
+horns:
+  roll: 41
+  name: "Horns"
+  description: "You sprout horns from the top of your head. You can no longer use Clothing - Hat Items."
+  modifiers: {}
+
+eye_grown_over:
+  roll: 42
+  name: "Eye Grown Over"
+  description: "One of your eyes has grown over with gnarled flesh. All of your Critical Hits do 1 less Damage than normal."
+  modifiers: {}
+
+third_eye:
+  roll: 43
+  name: "Third Eye"
+  description: "You have grown a third eye that can see into the Void. Once per turn, you may spend 2 Grit to force a Threat card just drawn to be discarded and Re-drawn."
+  modifiers: {}
+
+mouth_grown_over:
+  roll: 44
+  name: "Mouth Grown Over"
+  description: "You can no longer speak (at least nothing beyond mumbling). All Item prices in Town cost you +$10."
+  modifiers: {}
+
+fangs:
+  roll: 45
+  name: "Fangs"
+  description: "You have grown large, sharp fangs that protrude from your mouth. You gain a Bite Free Attack - Once per turn, 1 Combat, uses the D8 for Damage. If this Bite attack wounds a Void Enemy, you also take 1 Corruption Hit."
+  modifiers: {}
+
+second_head:
+  roll: 46
+  name: "Second Head"
+  description: "They say two heads are better than one...I'm not so sure. You may now use 2 Clothing - Hat Items and you are +1 Initiative. However, any time you roll a 6 for movement, you lose your Activation, as your two heads are arguing over where to go next."
+  modifiers:
+    initiative: 1
+
+arm_growth:
+  roll: 51
+  name: "Arm Growth"
+  description: "Your arm has grown deformed and giant. You can no longer use Clothing - Coat Items."
+  modifiers: {}
+
+leg_growth:
+  roll: 52
+  name: "Leg Growth"
+  description: "Your leg has grown deformed and giant. You can no longer use Clothing - Boots Items."
+  modifiers: {}
+
+hand_growth:
+  roll: 53
+  name: "Hand Growth"
+  description: "Your hand has grown deformed and giant. You can no longer use Clothing - Gloves Items."
+  modifiers: {}
+
+fused_with_item:
+  roll: 54
+  name: "Fused with Item"
+  description: "Your skin and muscle have grown out and extended around one of your Items, making it part of you. Choose one Item you are carrying that requires 1 or 2 Hands. From now on, that Item must be assigned every turn."
+  modifiers: {}
+
+fused_with_rock:
+  roll: 55
+  name: "Fused with Rock"
+  description: "Your skin has fused with chunks of rock, making you lumbering and slow. You are -2 Move each turn (minimum of 1), however you also gain Armor 4+."
+  modifiers:
+    move: -2
+
+fused_with_dark_stone:
+  roll: 56
+  name: "Fused with Dark Stone"
+  description: "Any Dark Stone shards you currently carry have become fused to you. These cannot be sold, used, or lost in any way until removed at the Doc's Office, and will continue to roll for corruption at the end of each Adventure as long as they are attached to you. New Dark Stone found and Items with Dark Stone Icons do not become fused, only the shards that you currently carry when this Mutation is rolled. If you aren't carrying any Dark Stone shards when this Mutation is rolled, instead, one Item you have with a Dark Stone Icon you are carrying has become fused to you. If that Item requires a Hand to use, it is considered permanently equipped."
+  modifiers: {}
+
+dark_stone_allergy:
+  roll: 61
+  name: "Dark Stone Allergy"
+  description: "At the start of each of your Activations, take 1 Hit for every Dark Stone shard and Item with a Dark Stone Icon you are carrying."
+  modifiers: {}
+
+nose_fallen_off:
+  roll: 62
+  name: "Nose Fallen Off"
+  description: "You are in bad shape. All of your Town Location Event Chart rolls are -1 to the roll (minimum of 2)."
+  modifiers: {}
+
+fused_fingers:
+  roll: 63
+  name: "Fused Fingers"
+  description: "Your fingers have fused together making it impossible to do any fine manipulation. You may not use Gun Items (unless it is an Artifact card)."
+  modifiers: {}
+
+eye_stalks:
+  roll: 64
+  name: "Eye Stalks"
+  description: "All of your Critical Hits are +1 Damage. You can now hold 1 fewer Corruption Point before you get a Mutation."
+  modifiers: {}
+
+void_speech:
+  roll: 65
+  name: "Void Speech"
+  description: "You can now understand what Void creatures are saying as they hiss and growl. This is unnerving to the extreme, but can give you a leg up in a fight. At the start of each of your Activations, if there are any Void Enemies on your Map Tile, you are +1 Initiative, but you also take 1 Sanity Damage, ignoring Willpower."
+  modifiers: {}
+
+child_of_the_void:
+  roll: 66
+  name: "Child of the Void"
+  description: "You have grown the upper torso of a small humanoid like creature out of your lower abdomen (you must name them). You are +1 Lore and, while in an Other World, +1 Initiative. You can now hold 1 fewer Corruption Point before you get a Mutation."
+  modifiers:
+    lore: 1

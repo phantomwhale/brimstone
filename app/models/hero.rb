@@ -3,6 +3,9 @@ class Hero < ApplicationRecord
   
   has_many :adjustments, dependent: :destroy
   has_many :items, dependent: :destroy
+  has_many :injuries, dependent: :destroy
+  has_many :madnesses, dependent: :destroy
+  has_many :mutations, dependent: :destroy
   
   # Sidebag tokens are stored as a JSON array of token names
   serialize :sidebag_contents, coder: JSON
@@ -84,9 +87,9 @@ class Hero < ApplicationRecord
   # Item/Equipment Methods
   # ==================
   
-  # Total number of hands available (may be modified by game effects later)
+  # Total number of hands available (includes adjustments from mutations, etc.)
   def total_hands
-    DEFAULT_HANDS
+    DEFAULT_HANDS + total_adjustment_for('total_hands')
   end
   
   # Number of hands currently in use by equipped items
