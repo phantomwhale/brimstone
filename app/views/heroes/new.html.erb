@@ -1,7 +1,74 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New hero</h1>
+<div class="w-full max-w-2xl mx-auto">
+  <% content_for :title, "New Hero" %>
 
-  <%= render "form", hero: @hero %>
+  <div class="hero-sheet">
+    <header class="sheet-header">
+      <div class="flex-1">
+        <h1 class="font-western text-2xl text-gold" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Create New Hero</h1>
+        <p class="font-body text-parchment-light text-sm mt-1">A new soul prepares to brave the darkness</p>
+      </div>
+      <div class="sheet-header-title">
+        <h2>Shadows of Brimstone</h2>
+      </div>
+    </header>
 
-  <%= link_to "Back to heroes", heroes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="p-6">
+      <%= form_with(model: @hero, class: "new-hero-form") do |form| %>
+        <% if @hero.errors.any? %>
+          <div class="bg-red-900/30 border-2 border-health rounded-lg p-4 mb-6">
+            <h2 class="font-western text-health text-lg mb-2"><%= pluralize(@hero.errors.count, "error") %> prohibited this hero from being saved:</h2>
+            <ul class="list-disc list-inside font-body text-parchment-light">
+              <% @hero.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="space-y-6">
+          <%# Hero Name %>
+          <div class="form-group">
+            <%= form.label :name, "Hero Name", class: "font-western text-lg text-wood-dark block mb-2" %>
+            <%= form.text_field :name, 
+                class: "w-full px-4 py-3 font-body text-lg bg-parchment-light border-3 border-wood rounded-lg focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/50",
+                placeholder: "Enter your hero's name...",
+                autofocus: true %>
+          </div>
+
+          <%# Hero Class %>
+          <div class="form-group">
+            <%= form.label :hero_class, "Hero Class", class: "font-western text-lg text-wood-dark block mb-2" %>
+            <%= form.select :hero_class, 
+                options_for_select(HeroClasses.names.map { |name| [name.titleize.gsub('_', ' '), name] }, @hero.hero_class),
+                { include_blank: "Select a class..." },
+                { class: "w-full px-4 py-3 font-body text-lg bg-parchment-light border-3 border-wood rounded-lg focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/50 cursor-pointer" } %>
+            
+            <p class="mt-2 font-body text-sm text-parchment-border italic">
+              Choosing a class will set your hero's starting attributes
+            </p>
+          </div>
+
+          <%# Portrait Preview (optional enhancement) %>
+          <div class="form-group">
+            <div class="flex items-center gap-4 p-4 bg-white/30 rounded-lg border-2 border-parchment-border">
+              <div class="w-20 h-20 bg-parchment-dark rounded-lg flex items-center justify-center border-2 border-wood">
+                <span class="font-body text-xs text-parchment-border text-center">Portrait<br>selected<br>later</span>
+              </div>
+              <div class="flex-1">
+                <p class="font-body text-sm text-wood-dark">
+                  <strong>Tip:</strong> After creating your hero, you can select a portrait and customize their attributes on the edit page.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%# Form Actions %>
+        <div class="mt-8 pt-6 border-t-2 border-parchment-border flex flex-wrap gap-4 justify-center">
+          <%= form.submit "Create Hero", class: "btn-save cursor-pointer" %>
+          <%= link_to "Cancel", heroes_path, class: "btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
